@@ -1,3 +1,18 @@
 [build]
   command = "npm run build"
   publish = "dist"
+[[redirects]]
+  from = "/"
+  to = "main-page/main-page.html"
+[[redirects]]
+  from = "/login"
+  to = "login/login.html"
+[[redirects]]
+  from = "/signup"
+  to = "signup/signup.html"
+[[redirects]]
+  from = "/profile"
+  to = "profile/profile.html"
+[[redirects]]
+  from = "/server-error"
+  to = "server-error/server-error.html"
