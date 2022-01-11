@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "parcel ./src/pages/**/*.pug --port 3000",
     "build": "parcel build ./src/pages/**/*.pug",
-    "start": "node ./express.js"
+    "start": "npm run build && node ./express.js"
   },
   "repository": {
     "type": "git",

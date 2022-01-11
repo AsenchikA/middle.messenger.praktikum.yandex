@@ -31,4 +31,4 @@ app.get('/*', (req, res) => {
   res.sendFile(path.join(currentDir, 'dist/not-found/not-found.html'));
 });
 
-app.listen(PORT); 
+app.listen(PORT);
