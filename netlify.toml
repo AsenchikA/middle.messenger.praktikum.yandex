@@ -16,3 +16,6 @@
 [[redirects]]
   from = "/server-error"
   to = "server-error/server-error.html"
+[[redirects]]
+  from = "/*"
+  to = "not-found/not-found.html"
