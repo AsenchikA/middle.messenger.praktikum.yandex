@@ -2,10 +2,6 @@
   "plugins": {
     "autoprefixer": true,
     "cssnano": true,
-    "precss": true,
-    "postcss-normalize": {
-      forceImport: true,
-    },
-    "postcss-import": true
+    "postcss-nested": true
   }
 }
