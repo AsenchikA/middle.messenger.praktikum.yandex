@@ -4,6 +4,7 @@ doctype html
 html(lang="ru")
   head
     include ./../../../src/layout/head.pug
+    link(rel="stylesheet", href="../../index.css")
   body.body
     main
       +error-block('404', 'Страница не найдена', 'Назад к чатам', './')

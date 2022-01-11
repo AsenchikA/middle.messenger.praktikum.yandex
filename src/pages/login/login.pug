@@ -4,6 +4,7 @@ doctype html
 html(lang="ru")
   head
     include ./../../../src/layout/head.pug
+    link(rel="stylesheet", href="../../index.css")
     link(rel="stylesheet", href="login.css")
   body.body
     main.login-form
@@ -14,4 +15,4 @@ html(lang="ru")
           +input('Пароль', 'password', 'password')(class='login-form__input')
         div.login-form__button-container
           input(type='submit', value='Войти').login-form__main-button
-          a(href='./signin').login-form__registration-link Зарегистрироваться
+          a(href='/signup').login-form__registration-link Зарегистрироваться
