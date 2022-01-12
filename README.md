@@ -17,3 +17,5 @@
 - `npm run dev` — запуск проекта локально,
 - `npm run build` — сборка проекта,
 - `npm run start` — сборка проекта и запуск express-сервера на 3000 порту.
+
+[Pull request, sprint 1](https://github.com/AsenchikA/middle.messenger.praktikum.yandex/pull/1)
