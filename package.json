@@ -1,0 +1,41 @@
+{
+  "name": "middle.messenger.praktikum.yandex",
+  "version": "1.0.0",
+  "description": "---",
+  "scripts": {
+    "dev": "parcel ./src/pages/**/*.pug --port 3000",
+    "build": "parcel build ./src/pages/**/*.pug",
+    "start": "npm run build && node ./express.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AsenchikA/middle.messenger.praktikum.yandex.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AsenchikA/middle.messenger.praktikum.yandex/issues"
+  },
+  "homepage": "https://github.com/AsenchikA/middle.messenger.praktikum.yandex#readme",
+  "browserslist": [
+    "last 1 version",
+    "> 1%"
+  ],
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "dependencies": {
+    "express": "^4.17.2"
+  },
+  "devDependencies": {
+    "@parcel/transformer-pug": "^2.1.1",
+    "autoprefixer": "^9.8.6",
+    "cssnano": "^4.1.10",
+    "modules": "^0.4.0",
+    "parcel": "^2.0.1",
+    "postcss": "^8.4.5",
+    "postcss-nested": "^5.0.6",
+    "pug": "^3.0.2"
+  }
+}
