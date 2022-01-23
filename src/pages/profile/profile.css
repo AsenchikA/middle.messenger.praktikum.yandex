@@ -4,8 +4,8 @@
   justify-content: center;
   height: 100%;
   width: 64px;
-  background-color: #FBFBFB;
-  border-right: 1px solid #EAEAEA;
+  background-color: #fbfbfb;
+  border-right: 1px solid #eaeaea;
   cursor: pointer;
 
   &__button {
@@ -13,10 +13,10 @@
     width: 28px;
     height: 28px;
     border-radius: 50%;
-    background-color: #3369F3;
+    background-color: #3369f3;
   }
 
-  &__button:before {
+  &__button::before {
     content: '';
     position: absolute;
     left: 9px;
@@ -29,8 +29,8 @@
     border-left: 1px solid #fff;
     transform: rotate(-45deg);
   }
-  
-  &__button:after {
+
+  &__button::after {
     content: '';
     position: absolute;
     left: 9px;
@@ -58,7 +58,7 @@
     width: 130px;
     height: 130px;
     border-radius: 50%;
-    background-color: #EFEFEF;
+    background-color: #efefef;
     margin: 0 auto;
     margin-bottom: 20px;
   }
@@ -85,15 +85,15 @@
   }
 
   &__info-item:not(:last-child) {
-    border-bottom: 1px solid #EAEAEA;
+    border-bottom: 1px solid #eaeaea;
   }
 
   &__info-label {
-    color: #1E1E1E;
+    color: #1e1e1e;
   }
 
   &__info-value {
-    color: #999999;
+    color: #999;
   }
 
   &__button-item {
@@ -104,16 +104,16 @@
   }
 
   &__button-item:not(:last-child) {
-    border-bottom: 1px solid #EAEAEA;
+    border-bottom: 1px solid #eaeaea;
   }
 
   &__edit-button {
     cursor: pointer;
-    color: #3369F3;
+    color: #3369f3;
   }
 
   &__close-button {
     cursor: pointer;
-    color: #FF0000;
+    color: #f00;
   }
 }

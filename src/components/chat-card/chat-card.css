@@ -1,15 +1,14 @@
-
 .chat-card {
   display: flex;
   align-items: center;
   padding: 10px 0;
-  border-top: 1px solid #EAEAEA;
+  border-top: 1px solid ##eaeaea;
 
   &__avatar {
     width: 45px;
     height: 45px;
     border-radius: 50%;
-    background-color: #EFEFEF;
+    background-color: #efefef;
     margin-right: 10px;
   }
 
@@ -24,6 +23,6 @@
     font-size: 12px;
     font-weight: 500;
     line-height: 15px;
-    color: #999999;
+    color: #999;
   }
 }

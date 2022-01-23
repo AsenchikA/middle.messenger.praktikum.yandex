@@ -3,6 +3,7 @@ const path = require('path');
 
 const app = express();
 const PORT = 3000;
+const port = process.env.PORT || PORT;
 const currentDir = process.cwd();
 
 app.use(express.static(path.join(currentDir, 'dist')));
@@ -31,4 +32,4 @@ app.get('/*', (req, res) => {
   res.sendFile(path.join(currentDir, 'dist/not-found/not-found.html'));
 });
 
-app.listen(PORT);
+app.listen(port);

@@ -1,8 +1,8 @@
 .sidebar {
   width: 310px;
   height: 100vh;
-  background-color: #FBFBFB;
-  border-right: 1px solid #EAEAEA;
+  background-color: #fbfbfb;
+  border-right: 1px solid #eaeaea;
 
   &__profile-block {
     display: flex;
@@ -14,15 +14,15 @@
 
   &__profile-link {
     position: relative;
-    color: #999999;
+    color: #999;
     font-size: 12px;
     font-weight: 500;
     cursor: pointer;
     padding-right: 12px;
     text-decoration: none;
   }
-  
-  &__profile-link:after {
+
+  &__profile-link::after {
     content: '';
     position: absolute;
     right: 0;
@@ -31,8 +31,8 @@
     margin: auto 0;
     width: 6px;
     height: 6px;
-    border-top: 1px solid #999999;
-    border-right: 1px solid #999999;
+    border-top: 1px solid #999;
+    border-right: 1px solid #999;
     transform: rotate(45deg);
   }
 
@@ -47,10 +47,10 @@
 
 .search-box {
   border-radius: 5px;
-  background-color: #EFEFEF;
+  background-color: #efefef;
   height: 32px;
   padding: 10px;
-  color: #999999;
+  color: #999;
   border: none;
 
   &:focus-visible {
@@ -72,5 +72,5 @@
   font-size: 12px;
   line-height: 12px;
   font-weight: 500;
-  color: #999999;
+  color: #999;
 }
