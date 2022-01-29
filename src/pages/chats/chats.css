@@ -1,3 +1,7 @@
+.chats-container {
+  display: flex;
+}
+
 .sidebar {
   width: 310px;
   height: 100vh;

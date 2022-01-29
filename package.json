@@ -3,10 +3,11 @@
   "version": "1.0.0",
   "description": "---",
   "scripts": {
-    "dev": "parcel ./src/pages/**/*.pug --port 3000",
-    "build": "parcel build ./src/pages/**/*.pug",
+    "dev": "parcel src/index.pug --port 3000",
+    "build": "parcel build src/index.pug",
     "start": "npm run build && node ./express.ts",
-    "stylelint": "stylelint **/*.css"
+    "stylelint": "stylelint **/*.css",
+    "eslint": "eslint **/*.ts"
   },
   "repository": {
     "type": "git",
@@ -27,10 +28,12 @@
     "node": ">=14.0.0"
   },
   "dependencies": {
+    "@types/pug": "^2.0.6",
     "express": "^4.17.2"
   },
   "devDependencies": {
     "@parcel/transformer-pug": "^2.1.1",
+    "@types/uuid": "^8.3.4",
     "@typescript-eslint/eslint-plugin": "^5.10.0",
     "@typescript-eslint/parser": "^5.10.0",
     "autoprefixer": "^9.8.6",
@@ -44,6 +47,7 @@
     "pug": "^3.0.2",
     "stylelint": "^14.2.0",
     "stylelint-config-standard": "^24.0.0",
-    "typescript": "^4.5.4"
+    "typescript": "^4.5.4",
+    "uuid": "^8.3.2"
   }
 }

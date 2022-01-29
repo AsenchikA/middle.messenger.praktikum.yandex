@@ -1,3 +1,10 @@
+.profile-body-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
 .back-block {
   display: flex;
   align-items: center;
