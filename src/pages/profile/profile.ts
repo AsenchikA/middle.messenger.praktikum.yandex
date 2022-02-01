@@ -1,5 +1,5 @@
-import Block from "~src/utils/block";
-import profileTemplate from "./profile.template";
+import Block from '~src/utils/block';
+import profileTemplate from './profile.template';
 
 export default class Profile extends Block {
   constructor() {
@@ -8,7 +8,7 @@ export default class Profile extends Block {
 
   protected getAttributes(): Record<string, string> {
     return {
-      class: 'profile-body-container',
+      class: 'profile-container',
     };
   }
 

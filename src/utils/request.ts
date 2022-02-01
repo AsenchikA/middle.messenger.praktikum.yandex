@@ -2,7 +2,7 @@ export enum METHOD_TYPES {
   GET = 'GET',
   PUT = 'PUT',
   POST = 'POST',
-  DELETE = 'DELETE'
+  DELETE = 'DELETE',
 }
 
 interface IOptions {
@@ -18,13 +18,21 @@ function queryStringify(queryObj: Record<string, unknown>) {
 }
 
 export class HTTPTransport {
-  public get = (url: string, options: IOptions = { method: METHOD_TYPES.GET }) => this.request(url, { ...options, method: METHOD_TYPES.GET });
+  public get = (url: string, options: IOptions = { method: METHOD_TYPES.GET }) => {
+    this.request(url, { ...options, method: METHOD_TYPES.GET });
+  };
 
-  public put = (url: string, options: IOptions = { method: METHOD_TYPES.GET }) => this.request(url, { ...options, method: METHOD_TYPES.PUT });
+  public put = (url: string, options: IOptions = { method: METHOD_TYPES.GET }) => {
+    this.request(url, { ...options, method: METHOD_TYPES.PUT });
+  };
 
-  public post = (url: string, options: IOptions = { method: METHOD_TYPES.GET }) => this.request(url, { ...options, method: METHOD_TYPES.POST });
+  public post = (url: string, options: IOptions = { method: METHOD_TYPES.GET }) => {
+    this.request(url, { ...options, method: METHOD_TYPES.POST });
+  };
 
-  public delete = (url: string, options: IOptions = { method: METHOD_TYPES.GET }) => this.request(url, { ...options, method: METHOD_TYPES.DELETE });
+  public delete = (url: string, options: IOptions = { method: METHOD_TYPES.GET }) => {
+    this.request(url, { ...options, method: METHOD_TYPES.DELETE });
+  };
 
   public request = (url: string, options: IOptions, queryObj: Record<string, unknown> = {}) => {
     const {

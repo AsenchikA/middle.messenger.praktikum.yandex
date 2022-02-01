@@ -2,11 +2,11 @@ import SubmitButton from '~src/components/submit-button/submit-button';
 import ValidatedInput from '~src/components/validated-input/validated-input';
 import Block from '~src/utils/block';
 import { VALIDATION_NAMES } from '~src/utils/validation';
-import signupTemplate from './signup.template';
+import profileEditingTemplate from './profile-editing.template';
 
-export default class Signup extends Block {
+export default class ProfileEditing extends Block {
   constructor() {
-    super('main');
+    super('div');
   }
 
   protected getChildren(): Record<string, Block> {
@@ -16,7 +16,7 @@ export default class Signup extends Block {
       placeholder: 'Почта',
       name: 'email',
       type: 'text',
-      className: 'signup-form__input',
+      className: 'profile-editing__input',
     });
     const loginInput = new ValidatedInput({
       isValid: false,
@@ -24,7 +24,7 @@ export default class Signup extends Block {
       placeholder: 'Логин',
       name: 'login',
       type: 'text',
-      className: 'signup-form__input',
+      className: 'profile-editing__input',
     });
     const firstNameInput = new ValidatedInput({
       isValid: false,
@@ -32,7 +32,7 @@ export default class Signup extends Block {
       placeholder: 'Имя',
       name: 'first_name',
       type: 'text',
-      className: 'signup-form__input',
+      className: 'profile-editing__input',
     });
     const secondNameInput = new ValidatedInput({
       isValid: false,
@@ -40,7 +40,15 @@ export default class Signup extends Block {
       placeholder: 'Фамилия',
       name: 'second_name',
       type: 'text',
-      className: 'signup-form__input',
+      className: 'profile-editing__input',
+    });
+    const chatNameInput = new ValidatedInput({
+      isValid: false,
+      validationName: VALIDATION_NAMES.NAME,
+      placeholder: 'Имя',
+      name: 'chat_name',
+      type: 'text',
+      className: 'profile-editing__input',
     });
     const phoneInput = new ValidatedInput({
       isValid: false,
@@ -48,23 +56,7 @@ export default class Signup extends Block {
       placeholder: 'Телефон',
       name: 'phone',
       type: 'text',
-      className: 'signup-form__input',
-    });
-    const passwordInput = new ValidatedInput({
-      isValid: false,
-      validationName: VALIDATION_NAMES.PASSWORD,
-      placeholder: 'Пароль',
-      name: 'password',
-      type: 'password',
-      className: 'signup-form__input',
-    });
-    const secondPasswordInput = new ValidatedInput({
-      isValid: false,
-      validationName: VALIDATION_NAMES.REPEATED_PASSWORD,
-      placeholder: 'Пароль (ещё раз)',
-      name: 'password',
-      type: 'password',
-      className: 'signup-form__input',
+      className: 'profile-editing__input',
     });
 
     const validatedInputList: ValidatedInput[] = [
@@ -72,30 +64,28 @@ export default class Signup extends Block {
       loginInput,
       firstNameInput,
       secondNameInput,
+      chatNameInput,
       phoneInput,
-      passwordInput,
     ];
 
     const submitButton = new SubmitButton({
-      text: 'Зарегистрироваться',
-      className: 'signup-form__main-button',
+      className: 'profile-editing__button',
+      text: 'Сохранить',
       events: {
         click: (event) => {
           event.preventDefault();
-          validatedInputList.forEach((child) => {
-            child.validate();
+          validatedInputList.forEach((input) => {
+            input.validate();
           });
 
-          secondPasswordInput.validate(passwordInput.value);
-
           // eslint-disable-next-line no-console
-          console.log('REGISTRATION_FORM DATA', {
+          console.log('PROFILE_FORM DATA', {
             email: emailInput.value,
             login: loginInput.value,
             firstName: firstNameInput.value,
             secondName: secondNameInput.value,
+            chatName: chatNameInput.value,
             phone: phoneInput.value,
-            password: passwordInput.value,
           });
         },
       },
@@ -106,20 +96,19 @@ export default class Signup extends Block {
       loginInput,
       firstNameInput,
       secondNameInput,
+      chatNameInput,
       phoneInput,
-      passwordInput,
-      secondPasswordInput,
       submitButton,
     };
   }
 
   protected getAttributes(): Record<string, string> {
     return {
-      class: 'signup-form',
+      class: 'profile-container',
     };
   }
 
   public render(): DocumentFragment {
-    return this.compile(signupTemplate);
+    return this.compile(profileEditingTemplate);
   }
 }

@@ -4,8 +4,7 @@ form.login-form__form(action="")
   div.login-form__input-container
     div !{loginField}
     div !{passwordField}
-  div.login-form__button-container
-    input(type='submit', value='Войти').login-form__main-button
+  div.login-form__button-container !{submitButton}
     a(href='/signup').login-form__registration-link Зарегистрироваться
 `;
 

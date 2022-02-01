@@ -1,16 +1,18 @@
-import Chats from "./pages/chats/chats";
-import Login from "./pages/login/login";
-import NotFound from "./pages/not-found/not-found";
-import Profile from "./pages/profile/profile";
-import ServerError from "./pages/server-error/server-error";
-import Signup from "./pages/signup/signup";
-import { render } from "./utils/render-DOM";
+import Chats from './pages/chats/chats';
+import Login from './pages/login/login';
+import NotFound from './pages/not-found/not-found';
+import ProfileEditing from './pages/profile-editing/profile-editing';
+import Profile from './pages/profile/profile';
+import ServerError from './pages/server-error/server-error';
+import Signup from './pages/signup/signup';
+import render from './utils/render-DOM';
 
 const loginPage = new Login();
 const signupPage = new Signup();
 const notFoundPage = new NotFound();
 const unavailablePage = new ServerError();
 const profilePage = new Profile();
+const profileEditingPage = new ProfileEditing();
 const chatsPage = new Chats();
 
 switch (document.location.pathname) {
@@ -23,6 +25,9 @@ switch (document.location.pathname) {
     break;
   case '/profile':
     render('#root', profilePage);
+    break;
+  case '/profile-editing':
+    render('#root', profileEditingPage);
     break;
   case '/chats':
     render('#root', chatsPage);

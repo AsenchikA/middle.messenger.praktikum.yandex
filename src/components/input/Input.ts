@@ -1,16 +1,16 @@
-import Block from "../../utils/block";
+import Block from '../../utils/block';
 import template from './input.template';
 
-interface IInput {
+export interface IInputProps {
   className?: string;
   placeholder: string;
   name: string;
   type: string;
-  events?: Record<string, () => void>;
+  events?: Record<string, (e: Event) => void>;
 }
 
-export default class Input extends Block<IInput> {
-  constructor(props: IInput) {
+export default class Input extends Block<IInputProps> {
+  constructor(props: IInputProps) {
     super('input', props);
   }
 
@@ -20,14 +20,18 @@ export default class Input extends Block<IInput> {
       placeholder: this.props.placeholder,
       inputName: this.props.name,
       type: this.props.type,
-    }
+    };
+  }
+
+  public get value(): string {
+    return (this.element as HTMLInputElement)?.value;
   }
 
   protected getEvents() {
     return this.props.events ? this.props.events : {};
-  };
+  }
 
   render() {
-    return this.compile(template, {});
+    return this.compile(template);
   }
 }

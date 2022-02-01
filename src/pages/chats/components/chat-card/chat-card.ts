@@ -1,9 +1,10 @@
-import Block from "~src/utils/block";
+import Block from '~src/utils/block';
 import template from './chat-card.template';
 
 interface IChatCardProps {
   name: string;
   message: string;
+  events?: Record<string, (e: Event) => void>;
 }
 
 export default class ChatCard extends Block<IChatCardProps> {
@@ -12,9 +13,13 @@ export default class ChatCard extends Block<IChatCardProps> {
   }
 
   protected getAttributes(): Record<string, string> {
-      return {
-        class: 'chat-card',
-      }
+    return {
+      class: 'chat-card',
+    };
+  }
+
+  protected getEvents(): Record<string, (e: Event) => void> {
+    return this.props.events || {};
   }
 
   public render(): DocumentFragment {

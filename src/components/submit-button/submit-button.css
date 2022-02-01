@@ -1,0 +1,9 @@
+.submit-button {
+  background-color: #3369f3;
+  color: #fff;
+  border-radius: 8px;
+  height: 37px;
+  border: none;
+  font-size: 13px;
+  cursor: pointer;
+}

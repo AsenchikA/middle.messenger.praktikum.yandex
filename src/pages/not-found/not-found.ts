@@ -1,6 +1,6 @@
-import ErrorBlock from "~src/components/error-block/error-block";
-import Block from "~src/utils/block";
-import notFoundTemplate from "./not-found.template";
+import ErrorBlock from '~src/components/error-block/error-block';
+import Block from '~src/utils/block';
+import notFoundTemplate from './not-found.template';
 
 export default class NotFound extends Block {
   constructor() {
@@ -10,7 +10,7 @@ export default class NotFound extends Block {
   protected getAttributes(): Record<string, string> {
     return {
       class: 'not-found-container',
-    }
+    };
   }
 
   protected getChildren(): Record<string, Block> {
@@ -21,7 +21,7 @@ export default class NotFound extends Block {
         linkText: 'Назад к чатам',
         linkHref: '/',
       }),
-    }
+    };
   }
 
   public render(): DocumentFragment {

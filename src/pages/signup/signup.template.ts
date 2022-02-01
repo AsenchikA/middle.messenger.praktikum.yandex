@@ -9,8 +9,7 @@ form.signup-form__form(action="")
     div !{phoneInput}
     div !{passwordInput}
     div !{secondPasswordInput}
-  div.signup-form__button-container
-    input(type='submit', value='Зарегистрироваться').signup-form__main-button
+  div.signup-form__button-container !{submitButton}
     a(href='/login').signup-form__registration-link Войти
 `;
 

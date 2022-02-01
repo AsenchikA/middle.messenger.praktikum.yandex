@@ -8,4 +8,8 @@ const currentDir = process.cwd();
 
 app.use(express.static(path.join(currentDir, 'dist')));
 
+app.get('/*', (req, res) => {
+  res.sendFile(path.join(currentDir, 'dist/index.html'));
+});
+
 app.listen(port);

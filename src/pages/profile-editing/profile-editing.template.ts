@@ -1,4 +1,4 @@
-const profileTemplate = `
+const profileEditingTemplate = `
 div.back-block
   a(href='/').back-block__button
 main.profile-block-container
@@ -9,30 +9,23 @@ main.profile-block-container
       ul.profile-block__info-list
         li.profile-block__info-item
           span.profile-block__info-label Почта
-          span.profile-block__info-value pochta@mail.ru
+          div.profile-block__input-container !{emailInput}
         li.profile-block__info-item
           span.profile-block__info-label Логин
-          span.profile-block__info-value ivanivanov
+          div.profile-block__input-container !{loginInput}
         li.profile-block__info-item
           span.profile-block__info-label Имя
-          span.profile-block__info-value Иван
+          div.profile-block__input-container !{firstNameInput}
         li.profile-block__info-item
           span.profile-block__info-label Фамилия
-          span.profile-block__info-value Иванов
+          div.profile-block__input-container !{secondNameInput}
         li.profile-block__info-item
           span.profile-block__info-label Имя в чате
-          span.profile-block__info-value Иван
+          div.profile-block__input-container !{chatNameInput}
         li.profile-block__info-item
           span.profile-block__info-label Телефон
-          span.profile-block__info-value +7 (909) 967 30 30
-    div.profile-block__button-block
-      ul.profile-block__button-list
-        li.profile-block__button-item
-          a.profile-block__edit-button Изменить данные
-        li.profile-block__button-item
-          a.profile-block__edit-button Изменить пароль
-        li.profile-block__button-item
-          a.profile-block__close-button Выйти
+          div.profile-block__input-container !{phoneInput}
+    div.profile-block__button-block !{submitButton}
 `;
 
-export default profileTemplate;
+export default profileEditingTemplate;

@@ -1,4 +1,4 @@
-import Block from "~src/utils/block";
+import Block from '~src/utils/block';
 import template from './error-block.template';
 
 interface IErrorBlockProps {
@@ -8,7 +8,7 @@ interface IErrorBlockProps {
   linkText: string;
 }
 
-export default class ErrorBlock extends Block<IErrorBlockProps>{
+export default class ErrorBlock extends Block<IErrorBlockProps> {
   constructor(props: IErrorBlockProps) {
     super('div', props);
   }

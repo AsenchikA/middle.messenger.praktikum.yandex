@@ -1,4 +1,4 @@
-export class EventBus {
+export default class EventBus {
   private listeners: Record<string, ((args: unknown[]) => void)[]>;
 
   constructor() {
@@ -14,7 +14,7 @@ export class EventBus {
 
   public off(event: string, callback: () => void) {
     if (!this.listeners[event]) {
-      throw new Event(`Нет события: ${event}`);
+      throw new Error(`Нет события: ${event}`);
     }
     this.listeners[event] = this.listeners[event].filter((listener) => listener !== callback);
   }

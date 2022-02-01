@@ -10,7 +10,7 @@
   padding: 50px 30px 30px;
   text-align: center;
   position: relative;
-  top:50%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 
@@ -29,18 +29,12 @@
 
   &__main-button {
     width: 100%;
-    background-color: #3369f3;
-    color: #fff;
-    border-radius: 8px;
-    height: 37px;
-    border: none;
-    font-size: 13px;
-    cursor: pointer;
     margin-bottom: 15px;
   }
 
   &__input {
     width: 100%;
+    margin-bottom: 30px;
   }
 
   &__button-container {

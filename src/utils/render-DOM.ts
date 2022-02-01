@@ -1,6 +1,6 @@
-import Block from "./block";
+import Block from './block';
 
-export function render(selector: string, block: Block) {
+export default function render(selector: string, block: Block) {
   const root = document.querySelector(selector);
   const blockContent = block.getContent();
 
@@ -10,4 +10,4 @@ export function render(selector: string, block: Block) {
   }
 
   return root;
-} 
+}
