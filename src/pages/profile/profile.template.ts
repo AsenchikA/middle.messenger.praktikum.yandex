@@ -28,11 +28,9 @@ main.profile-block-container
     div.profile-block__button-block
       ul.profile-block__button-list
         li.profile-block__button-item
-          a.profile-block__edit-button Изменить данные
+          a(href='/profile-editing').profile-block__edit-button Изменить данные
         li.profile-block__button-item
-          a.profile-block__edit-button Изменить пароль
-        li.profile-block__button-item
-          a.profile-block__close-button Выйти
+          a(href='/login').profile-block__close-button Выйти
 `;
 
 export default profileTemplate;

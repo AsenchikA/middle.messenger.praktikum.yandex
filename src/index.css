@@ -45,3 +45,14 @@ p {
 #root {
   height: 100%;
 }
+
+:root {
+  --white: #fff;
+  --primary: #3369f3;
+  --textColor01: #1e1e1e;
+  --textColor02: #999;
+  --navBackgroundColor: #fbfbfb;
+  --borderColor: #eaeaea;
+  --neutralBackgroundColor: #efefef;
+  --errorColor: #ff2f2f;
+}

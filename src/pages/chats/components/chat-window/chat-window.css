@@ -8,7 +8,7 @@
     align-items: center;
     margin: 0 20px;
     padding: 20px 0;
-    border-bottom: 1px solid #eaeaea;
+    border-bottom: 1px solid var(--borderColor);
   }
 
   &__header-name {
@@ -22,7 +22,7 @@
   }
 
   &__date {
-    color: #999;
+    color: var(--textColor02);
     font-weight: 500;
     font-size: 12px;
     text-align: center;
@@ -33,7 +33,7 @@
     width: fit-content;
     max-width: 400px;
     font-size: 12px;
-    color: #1e1e1e;
+    color: var(--textColor01);
     padding: 10px;
     margin-bottom: 10px;
 
@@ -53,12 +53,12 @@
     display: flex;
     margin: 0 20px;
     padding: 10px 0;
-    border-top: 1px solid #eaeaea;
+    border-top: 1px solid var(--borderColor);
   }
 
   &__message-block {
     flex-grow: 1;
-    background-color: #efefef;
+    background-color: var(--neutralBackgroundColor);
     border-radius: 30px;
     margin-right: 10px;
     height: 32px;

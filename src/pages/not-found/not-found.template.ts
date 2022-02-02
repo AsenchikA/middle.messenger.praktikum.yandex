@@ -1,5 +1,5 @@
 const notFoundTemplate = `
-div !{errorBlock}
+!= errorBlock
 `;
 
 export default notFoundTemplate;

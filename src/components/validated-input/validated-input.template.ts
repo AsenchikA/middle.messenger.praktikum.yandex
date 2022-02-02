@@ -1,5 +1,5 @@
 const validatedInputTemplate = `
-div !{loginField}
+!= loginField
 p.validated-input__message #{loginValidationMessage}
 `;
 

@@ -2,14 +2,14 @@
   display: flex;
   align-items: center;
   padding: 10px 0;
-  border-top: 1px solid ##eaeaea;
+  border-top: 1px solid var(--borderColor);
   cursor: pointer;
 
   &__avatar {
     width: 45px;
     height: 45px;
     border-radius: 50%;
-    background-color: #efefef;
+    background-color: var(--neutralBackgroundColor);
     margin-right: 10px;
   }
 
@@ -24,6 +24,6 @@
     font-size: 12px;
     font-weight: 500;
     line-height: 15px;
-    color: #999;
+    color: var(--textColor02);
   }
 }

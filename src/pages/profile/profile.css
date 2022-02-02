@@ -11,8 +11,8 @@
   justify-content: center;
   height: 100%;
   width: 64px;
-  background-color: #fbfbfb;
-  border-right: 1px solid #eaeaea;
+  background-color: var(--navBackgroundColor);
+  border-right: 1px solid var(--borderColor);
   cursor: pointer;
 
   &__button {
@@ -20,7 +20,7 @@
     width: 28px;
     height: 28px;
     border-radius: 50%;
-    background-color: #3369f3;
+    background-color: var(--primary);
   }
 
   &__button::before {
@@ -32,8 +32,8 @@
     margin: auto 0;
     width: 6px;
     height: 6px;
-    border-top: 1px solid #fff;
-    border-left: 1px solid #fff;
+    border-top: 1px solid var(--white);
+    border-left: 1px solid var(--white);
     transform: rotate(-45deg);
   }
 
@@ -46,7 +46,7 @@
     margin: auto 0;
     width: 11px;
     height: 1px;
-    background-color: #fff;
+    background-color: var(--white);
   }
 }
 
@@ -65,7 +65,7 @@
     width: 130px;
     height: 130px;
     border-radius: 50%;
-    background-color: #efefef;
+    background-color: var(--neutralBackgroundColor);
     margin: 0 auto;
     margin-bottom: 20px;
   }
@@ -92,15 +92,15 @@
   }
 
   &__info-item:not(:last-child) {
-    border-bottom: 1px solid #eaeaea;
+    border-bottom: 1px solid var(--borderColor);
   }
 
   &__info-label {
-    color: #1e1e1e;
+    color: var(--textColor01);
   }
 
   &__info-value {
-    color: #999;
+    color: var(--textColor02);
   }
 
   &__button-item {
@@ -111,16 +111,18 @@
   }
 
   &__button-item:not(:last-child) {
-    border-bottom: 1px solid #eaeaea;
+    border-bottom: 1px solid var(--borderColor);
   }
 
   &__edit-button {
     cursor: pointer;
-    color: #3369f3;
+    color: var(--primary);
+    text-decoration: none;
   }
 
   &__close-button {
     cursor: pointer;
-    color: #f00;
+    color: var(--errorColor);
+    text-decoration: none;
   }
 }

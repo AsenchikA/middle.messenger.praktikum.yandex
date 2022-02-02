@@ -5,8 +5,8 @@
 .sidebar {
   width: 310px;
   height: 100vh;
-  background-color: #fbfbfb;
-  border-right: 1px solid #eaeaea;
+  background-color: var(--navBackgroundColor);
+  border-right: 1px solid var(--borderColor);
 
   &__profile-block {
     display: flex;
@@ -18,7 +18,7 @@
 
   &__profile-link {
     position: relative;
-    color: #999;
+    color: var(--textColor02);
     font-size: 12px;
     font-weight: 500;
     cursor: pointer;
@@ -35,8 +35,8 @@
     margin: auto 0;
     width: 6px;
     height: 6px;
-    border-top: 1px solid #999;
-    border-right: 1px solid #999;
+    border-top: 1px solid var(--textColor02);
+    border-right: 1px solid var(--textColor02);
     transform: rotate(45deg);
   }
 
@@ -51,10 +51,10 @@
 
 .search-box {
   border-radius: 5px;
-  background-color: #efefef;
+  background-color: var(--neutralBackgroundColor);
   height: 32px;
   padding: 10px;
-  color: #999;
+  color: var(--textColor02);
   border: none;
 
   &:focus-visible {
@@ -72,6 +72,6 @@
     font-size: 12px;
     line-height: 12px;
     font-weight: 500;
-    color: #999;
+    color: var(--textColor02);
   }
 }

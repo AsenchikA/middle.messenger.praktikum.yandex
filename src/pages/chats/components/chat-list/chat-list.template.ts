@@ -1,7 +1,7 @@
 const chatListTemplate = `
 div.chat-list
   each chat in chatList
-    div !{chat}
+    != chat
 `;
 
 export default chatListTemplate;

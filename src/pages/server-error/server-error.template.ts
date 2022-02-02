@@ -1,5 +1,5 @@
 const serverErrorTemplate = `
-div !{errorBlock}
+!= errorBlock
 `;
 
 export default serverErrorTemplate;

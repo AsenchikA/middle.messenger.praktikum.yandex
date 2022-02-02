@@ -1,6 +1,6 @@
 .submit-button {
-  background-color: #3369f3;
-  color: #fff;
+  background-color: var(--primary);
+  color: var(--white);
   border-radius: 8px;
   height: 37px;
   border: none;

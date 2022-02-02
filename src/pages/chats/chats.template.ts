@@ -4,9 +4,10 @@ nav.sidebar
     a(href='/profile').sidebar__profile-link Профиль
   div.sidebar__search-box-container
     input(placeholder='Поиск').search-box.sidebar__search-box
-  div !{chatList}
+  != chatList
 if activeChatId
-  main.chat-main.chat-main--with-chat !{chatWindow}
+  main.chat-main.chat-main--with-chat 
+    != chatWindow
 else
   main.chat-main.chat-main--empty Выберите чат чтобы отправить сообщение
 `;
