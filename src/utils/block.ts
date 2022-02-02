@@ -2,7 +2,7 @@ import { v4 as makeUUID } from 'uuid';
 import * as pug from 'pug';
 import EventBus from './event-bus';
 
-export default abstract class Block<T extends Record<string, unknown> = {}> {
+export default abstract class Block<T extends object = {}> {
   public static EVENTS = {
     INIT: 'init',
     FLOW_CDM: 'flow:component-did-mount',
