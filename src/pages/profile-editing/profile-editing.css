@@ -11,8 +11,8 @@
   justify-content: center;
   height: 100%;
   width: 64px;
-  background-color: var(--navBackgroundColor);
-  border-right: 1px solid var(--borderColor);
+  background-color: var(--nav-background-color);
+  border-right: 1px solid var(--border-color);
   cursor: pointer;
 
   &__button {
@@ -65,7 +65,7 @@
     width: 130px;
     height: 130px;
     border-radius: 50%;
-    background-color: var(--neutralBackgroundColor);
+    background-color: var(--neutral-background-color);
     margin: 0 auto;
     margin-bottom: 20px;
   }
@@ -92,15 +92,15 @@
   }
 
   &__info-item:not(:last-child) {
-    border-bottom: 1px solid var(--borderColor);
+    border-bottom: 1px solid var(--border-color);
   }
 
   &__info-label {
-    color: var(--textColor01);
+    color: var(--text-color-01);
   }
 
   &__info-value {
-    color: var(--textColor02);
+    color: var(--text-color-02);
   }
 
   &__input-container {

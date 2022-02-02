@@ -49,10 +49,10 @@ p {
 :root {
   --white: #fff;
   --primary: #3369f3;
-  --textColor01: #1e1e1e;
-  --textColor02: #999;
-  --navBackgroundColor: #fbfbfb;
-  --borderColor: #eaeaea;
-  --neutralBackgroundColor: #efefef;
-  --errorColor: #ff2f2f;
+  --text-color-01: #1e1e1e;
+  --text-color-02: #999;
+  --nav-background-color: #fbfbfb;
+  --border-color: #eaeaea;
+  --neutral-background-color: #efefef;
+  --error-color: #ff2f2f;
 }

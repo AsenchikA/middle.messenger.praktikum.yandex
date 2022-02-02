@@ -4,7 +4,7 @@
   &__message {
     position: absolute;
     top: 35px;
-    color: var(--errorColor);
+    color: var(--error-color);
     font-size: 10px;
     text-align: left;
     z-index: 2;
