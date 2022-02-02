@@ -59,26 +59,22 @@ export default class ChatList extends Block<IChatListProps> {
   public compile(template: string, props?: Record<string, unknown>) {
     const propsAndStubs = { ...props };
 
-    if (this.children) {
-      Object.entries(this.children).forEach(([key, child]) => {
-        propsAndStubs[key] = `<div data-id="${child.id}"></div>`;
-      });
-    }
+    Object.entries(this.children).forEach(([key, child]) => {
+      propsAndStubs[key] = `<div data-id="${child.id}"></div>`;
+    });
 
     const fragment = document.createElement('template');
     const compiledFunction = pug.compile(template);
 
     fragment.innerHTML = compiledFunction({ chatList: Object.values(propsAndStubs) });
 
-    if (this.children) {
-      Object.values(this.children).forEach((child) => {
-        const stub = fragment.content.querySelector(`[data-id="${child.id}"]`);
-        const childContent = child.getContent();
-        if (childContent) {
-          stub?.replaceWith(childContent);
-        }
-      });
-    }
+    Object.values(this.children).forEach((child) => {
+      const stub = fragment.content.querySelector(`[data-id="${child.id}"]`);
+      const childContent = child.getContent();
+      if (childContent) {
+        stub?.replaceWith(childContent);
+      }
+    });
 
     return fragment.content;
   }

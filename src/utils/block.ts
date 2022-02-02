@@ -2,7 +2,7 @@ import { v4 as makeUUID } from 'uuid';
 import * as pug from 'pug';
 import EventBus from './event-bus';
 
-export default abstract class Block<T extends object = {}> {
+export default abstract class Block<T extends Record<string, unknown> = {}> {
   public static EVENTS = {
     INIT: 'init',
     FLOW_CDM: 'flow:component-did-mount',
@@ -20,7 +20,7 @@ export default abstract class Block<T extends object = {}> {
 
   public props: T;
 
-  public children: Record<string, Block>;
+  public children: Record<string, Block> = {};
 
   public eventBus: EventBus;
 
@@ -128,31 +128,27 @@ export default abstract class Block<T extends object = {}> {
   public compile(template: string, props?: Record<string, unknown>) {
     const propsAndStubs = { ...props };
 
-    if (this.children) {
-      Object.entries(this.children).forEach(([key, child]) => {
-        propsAndStubs[key] = `<div data-id="${child.id}"></div>`;
-      });
-    }
+    Object.entries(this.children).forEach(([key, child]) => {
+      propsAndStubs[key] = `<div data-id="${child.id}"></div>`;
+    });
 
     const fragment = document.createElement('template');
     const compiledFunction = pug.compile(template);
 
     fragment.innerHTML = compiledFunction(propsAndStubs);
 
-    if (this.children) {
-      Object.values(this.children).forEach((child) => {
-        const stub = fragment.content.querySelector(`[data-id="${child.id}"]`);
-        const childContent = child.getContent();
-        if (childContent) {
-          stub?.replaceWith(childContent);
-        }
-      });
-    }
+    Object.values(this.children).forEach((child) => {
+      const stub = fragment.content.querySelector(`[data-id="${child.id}"]`);
+      const childContent = child.getContent();
+      if (childContent) {
+        stub?.replaceWith(childContent);
+      }
+    });
 
     return fragment.content;
   }
 
-  public setProps(nextProps: T) {
+  public setProps(nextProps: Partial<T>) {
     if (!nextProps) {
       return;
     }
