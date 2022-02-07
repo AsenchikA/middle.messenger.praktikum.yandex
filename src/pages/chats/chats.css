@@ -1,0 +1,77 @@
+.chats-container {
+  display: flex;
+}
+
+.sidebar {
+  width: 310px;
+  height: 100vh;
+  background-color: var(--nav-background-color);
+  border-right: 1px solid var(--border-color);
+
+  &__profile-block {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 20px;
+    padding-bottom: 10px;
+  }
+
+  &__profile-link {
+    position: relative;
+    color: var(--text-color-02);
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    padding-right: 12px;
+    text-decoration: none;
+  }
+
+  &__profile-link::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto 0;
+    width: 6px;
+    height: 6px;
+    border-top: 1px solid var(--text-color-02);
+    border-right: 1px solid var(--text-color-02);
+    transform: rotate(45deg);
+  }
+
+  &__search-box-container {
+    padding: 15px 10px;
+  }
+
+  &__search-box {
+    width: 100%;
+  }
+}
+
+.search-box {
+  border-radius: 5px;
+  background-color: var(--neutral-background-color);
+  height: 32px;
+  padding: 10px;
+  color: var(--text-color-02);
+  border: none;
+
+  &:focus-visible {
+    outline: none;
+  }
+}
+
+.chat-main {
+  flex-grow: 1;
+  display: flex;
+
+  &--empty {
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    line-height: 12px;
+    font-weight: 500;
+    color: var(--text-color-02);
+  }
+}

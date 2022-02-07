@@ -103,26 +103,28 @@
     color: var(--text-color-02);
   }
 
-  &__button-item {
+  &__input-container {
+    flex-grow: 1;
+    margin-left: 8px;
+  }
+
+  & .validated-input {
+    &__message {
+      right: 0;
+      top: 27px;
+    }
+  }
+}
+
+.profile-editing {
+  &__input {
+    padding: 0;
+    text-align: right;
+    border-bottom: none;
     width: 100%;
-    padding: 10px 0;
-    font-size: 13px;
-    font-weight: 500;
   }
 
-  &__button-item:not(:last-child) {
-    border-bottom: 1px solid var(--border-color);
-  }
-
-  &__edit-button {
-    cursor: pointer;
-    color: var(--primary);
-    text-decoration: none;
-  }
-
-  &__close-button {
-    cursor: pointer;
-    color: var(--error-color);
-    text-decoration: none;
+  &__button {
+    width: 100%;
   }
 }
