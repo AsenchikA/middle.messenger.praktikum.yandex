@@ -30,8 +30,9 @@ export const validate = (
         message: 'Сообщение не должно быть пустым',
       };
     case VALIDATION_NAMES.EMAIL:
+      // source: https://emailregex.com/
       return {
-        isValid: /^[\w-.]+@[a-zA-Z]+\.[\w-]*$/.test(value),
+        isValid: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(value),
         message: 'Некорректный email',
       };
     case VALIDATION_NAMES.PASSWORD:

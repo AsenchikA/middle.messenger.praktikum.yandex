@@ -2,8 +2,8 @@ import Block from '~src/utils/block';
 import submitButtonTemplate from './submit-button.template';
 
 interface ISubmitButtonProps {
-  className?: string;
   text: string;
+  className?: string;
   events?: Record<string, (e: Event) => void>;
 }
 
@@ -19,7 +19,7 @@ export default class SubmitButton extends Block<ISubmitButtonProps> {
   }
 
   protected getEvents(): Record<string, (e: Event) => void> {
-    return this.props.events ? this.props.events : {};
+    return this.props.events || {};
   }
 
   public render(): DocumentFragment {

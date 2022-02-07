@@ -2,10 +2,10 @@ import Block from '../../utils/block';
 import template from './input.template';
 
 export interface IInputProps {
-  className?: string;
   placeholder: string;
   name: string;
   type: string;
+  className?: string;
   events?: Record<string, (e: Event) => void>;
 }
 
@@ -28,7 +28,7 @@ export default class Input extends Block<IInputProps> {
   }
 
   protected getEvents() {
-    return this.props.events ? this.props.events : {};
+    return this.props.events || {};
   }
 
   render() {

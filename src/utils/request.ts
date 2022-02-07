@@ -43,7 +43,7 @@ export class HTTPTransport {
 
       let fullUrl = url;
 
-      if (method === METHOD_TYPES.GET && queryObj) {
+      if (Object.keys(queryObj).length > 0) {
         fullUrl = `${url}${queryStringify(queryObj)}`;
       }
 
