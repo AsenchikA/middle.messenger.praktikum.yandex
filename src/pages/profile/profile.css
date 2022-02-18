@@ -61,13 +61,32 @@
   width: 510px;
   padding: 60px 0;
 
-  &__avatar {
+  &__avatar-container {
+    position: relative;
+    display: block;
+    margin: 0 auto;
+    border-radius: 50%;
     width: 130px;
     height: 130px;
-    border-radius: 50%;
-    background-color: var(--neutral-background-color);
-    margin: 0 auto;
     margin-bottom: 20px;
+  }
+
+  &__avatar-container::before {
+    display: none;
+    content: 'Поменять аватар';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto 0;
+    height: fit-content;
+    text-align: center;
+    color: var(--white);
+    font-sixe: 13px;
+  }
+
+  &__avatar-container:hover::before {
+    display: block;
+    cursor: pointer;
   }
 
   &__name {
@@ -103,26 +122,19 @@
     color: var(--text-color-02);
   }
 
-  &__button-item {
-    width: 100%;
-    padding: 10px 0;
-    font-size: 13px;
-    font-weight: 500;
-  }
-
   &__button-item:not(:last-child) {
     border-bottom: 1px solid var(--border-color);
   }
 
   &__edit-button {
-    cursor: pointer;
     color: var(--primary);
-    text-decoration: none;
+    font-weight: 500;
+    width: 100%;
   }
 
   &__close-button {
-    cursor: pointer;
     color: var(--error-color);
-    text-decoration: none;
+    font-weight: 500;
+    width: 100%;
   }
 }

@@ -3,8 +3,8 @@ div.back-block
   a(href='/').back-block__button
 main.profile-block-container
   div.profile-block
-    div.profile-block__avatar
-    p.profile-block__name Иван
+    img(src=avatarUrl).profile-block__static-avatar
+    p.profile-block__name #{userName}
     div.profile-block__info
       ul.profile-block__info-list
         li.profile-block__info-item

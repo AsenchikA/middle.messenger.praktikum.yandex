@@ -1,0 +1,17 @@
+.button {
+  border: none;
+  font-size: 13px;
+  cursor: pointer;
+
+  &--submit {
+    background-color: var(--primary);
+    color: var(--white);
+    border-radius: 8px;
+    padding: 10px 0;
+  }
+
+  &--text {
+    background-color: transparent;
+    padding: 10px 0;
+  }
+}

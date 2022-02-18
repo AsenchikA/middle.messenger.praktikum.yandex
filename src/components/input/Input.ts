@@ -2,6 +2,7 @@ import Block from '../../utils/block';
 import template from './input.template';
 
 export interface IInputProps {
+  defaultValue?: string;
   placeholder: string;
   name: string;
   type: string;
@@ -17,6 +18,7 @@ export default class Input extends Block<IInputProps> {
   protected getAttributes() {
     return {
       class: `input ${this.props.className || ''}`,
+      value: this.props.defaultValue || '',
       placeholder: this.props.placeholder,
       inputName: this.props.name,
       type: this.props.type,

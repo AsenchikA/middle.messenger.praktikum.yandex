@@ -27,7 +27,7 @@ export const validate = (
     case VALIDATION_NAMES.MESSAGE:
       return {
         isValid: value.length > 0,
-        message: 'Сообщение не должно быть пустым',
+        message: 'Заполните поле',
       };
     case VALIDATION_NAMES.EMAIL:
       // source: https://emailregex.com/

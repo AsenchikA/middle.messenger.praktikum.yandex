@@ -1,5 +1,7 @@
-import SubmitButton from '~src/components/submit-button/submit-button';
+import Button, { EButtonAppearance } from '~src/components/button/button';
 import ValidatedInput from '~src/components/validated-input/validated-input';
+import authController from '~src/controllers/auth-controller';
+import { ISignUpUserModel } from '~src/types';
 import Block from '~src/utils/block';
 import { VALIDATION_NAMES } from '~src/utils/validation';
 import signupTemplate from './signup.template';
@@ -76,28 +78,30 @@ export default class Signup extends Block {
       passwordInput,
     ];
 
-    const submitButton = new SubmitButton({
+    const submitButton = new Button({
+      appearance: EButtonAppearance.SUBMIT,
       text: 'Зарегистрироваться',
       className: 'signup-form__main-button',
-      events: {
-        click: (event) => {
-          event.preventDefault();
-          validatedInputList.forEach((child) => {
-            child.validate();
-          });
+      onClick: () => {
+        validatedInputList.forEach((child) => {
+          child.validate();
+        });
 
-          secondPasswordInput.validate(passwordInput.value);
+        secondPasswordInput.validate(passwordInput.value);
 
-          // eslint-disable-next-line no-console
-          console.log('REGISTRATION_FORM DATA', {
+        const isFormValid = validatedInputList.every((input) => input.state.isValid) && secondPasswordInput.state.isValid;
+
+        if (isFormValid) {
+          const model: ISignUpUserModel = {
             email: emailInput.value,
             login: loginInput.value,
-            firstName: firstNameInput.value,
-            secondName: secondNameInput.value,
+            first_name: firstNameInput.value,
+            second_name: secondNameInput.value,
             phone: phoneInput.value,
             password: passwordInput.value,
-          });
-        },
+          };
+          authController.signUp(model);
+        }
       },
     });
 

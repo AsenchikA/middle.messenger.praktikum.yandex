@@ -61,13 +61,14 @@
   width: 510px;
   padding: 60px 0;
 
-  &__avatar {
+  &__static-avatar {
+    display: block;
     width: 130px;
     height: 130px;
     border-radius: 50%;
-    background-color: var(--neutral-background-color);
     margin: 0 auto;
     margin-bottom: 20px;
+    object-fit: cover;
   }
 
   &__name {

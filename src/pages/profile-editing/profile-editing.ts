@@ -1,16 +1,46 @@
-import SubmitButton from '~src/components/submit-button/submit-button';
+import Button, { EButtonAppearance } from '~src/components/button/button';
 import ValidatedInput from '~src/components/validated-input/validated-input';
+import authController from '~src/controllers/auth-controller';
+import userController from '~src/controllers/user-controller';
+import { IEditableUserModel } from '~src/types';
 import Block from '~src/utils/block';
+import connect from '~src/utils/connect';
+import isEqual from '~src/utils/is-equal';
+import { IRootState } from '~src/utils/store';
 import { VALIDATION_NAMES } from '~src/utils/validation';
 import profileEditingTemplate from './profile-editing.template';
 
-export default class ProfileEditing extends Block {
-  constructor() {
-    super('div');
+interface IMapStateToProps {
+  userModel: IEditableUserModel;
+}
+
+class ProfileEditing extends Block<IMapStateToProps> {
+  constructor(props: IMapStateToProps) {
+    super('div', props);
+
+    if (!props.userModel) {
+      authController.getUser();
+    }
+  }
+
+  public componentDidUpdate(oldProps: IMapStateToProps, newProps: IMapStateToProps): boolean {
+    const isEqualProps = isEqual(oldProps, newProps);
+
+    if (!isEqualProps) {
+      this.children.emailInput.setProps({ defaultValue: newProps.userModel?.email });
+      this.children.loginInput.setProps({ defaultValue: newProps.userModel?.login });
+      this.children.firstNameInput.setProps({ defaultValue: newProps.userModel?.first_name });
+      this.children.secondNameInput.setProps({ defaultValue: newProps.userModel?.second_name });
+      this.children.chatNameInput.setProps({ defaultValue: newProps.userModel?.display_name });
+      this.children.phoneInput.setProps({ defaultValue: newProps.userModel?.phone });
+    }
+
+    return !isEqualProps;
   }
 
   protected getChildren(): Record<string, Block> {
     const emailInput = new ValidatedInput({
+      defaultValue: this.props.userModel?.email,
       isValid: false,
       validationName: VALIDATION_NAMES.EMAIL,
       placeholder: 'Почта',
@@ -19,6 +49,7 @@ export default class ProfileEditing extends Block {
       className: 'profile-editing__input',
     });
     const loginInput = new ValidatedInput({
+      defaultValue: this.props.userModel?.login,
       isValid: false,
       validationName: VALIDATION_NAMES.LOGIN,
       placeholder: 'Логин',
@@ -27,6 +58,7 @@ export default class ProfileEditing extends Block {
       className: 'profile-editing__input',
     });
     const firstNameInput = new ValidatedInput({
+      defaultValue: this.props.userModel?.first_name,
       isValid: false,
       validationName: VALIDATION_NAMES.NAME,
       placeholder: 'Имя',
@@ -35,6 +67,7 @@ export default class ProfileEditing extends Block {
       className: 'profile-editing__input',
     });
     const secondNameInput = new ValidatedInput({
+      defaultValue: this.props.userModel?.second_name,
       isValid: false,
       validationName: VALIDATION_NAMES.NAME,
       placeholder: 'Фамилия',
@@ -43,6 +76,7 @@ export default class ProfileEditing extends Block {
       className: 'profile-editing__input',
     });
     const chatNameInput = new ValidatedInput({
+      defaultValue: this.props.userModel?.display_name,
       isValid: false,
       validationName: VALIDATION_NAMES.NAME,
       placeholder: 'Имя',
@@ -51,6 +85,7 @@ export default class ProfileEditing extends Block {
       className: 'profile-editing__input',
     });
     const phoneInput = new ValidatedInput({
+      defaultValue: this.props.userModel?.phone,
       isValid: false,
       validationName: VALIDATION_NAMES.PHONE,
       placeholder: 'Телефон',
@@ -68,26 +103,27 @@ export default class ProfileEditing extends Block {
       phoneInput,
     ];
 
-    const submitButton = new SubmitButton({
+    const submitButton = new Button({
+      appearance: EButtonAppearance.SUBMIT,
       className: 'profile-editing__button',
       text: 'Сохранить',
-      events: {
-        click: (event) => {
-          event.preventDefault();
-          validatedInputList.forEach((input) => {
-            input.validate();
-          });
+      onClick: () => {
+        validatedInputList.forEach((input) => {
+          input.validate();
+        });
 
-          // eslint-disable-next-line no-console
-          console.log('PROFILE_FORM DATA', {
+        const isFormValid = validatedInputList.every((input) => input.state.isValid);
+
+        if (isFormValid) {
+          userController.saveUserProfile({
             email: emailInput.value,
             login: loginInput.value,
-            firstName: firstNameInput.value,
-            secondName: secondNameInput.value,
-            chatName: chatNameInput.value,
+            first_name: firstNameInput.value,
+            second_name: secondNameInput.value,
+            display_name: chatNameInput.value,
             phone: phoneInput.value,
           });
-        },
+        }
       },
     });
 
@@ -109,6 +145,17 @@ export default class ProfileEditing extends Block {
   }
 
   public render(): DocumentFragment {
-    return this.compile(profileEditingTemplate);
+    return this.compile(profileEditingTemplate, {
+      avatarUrl: this.props.userModel ? `https://ya-praktikum.tech/api/v2/resources/${this.props.userModel.avatar}` : '',
+      userName: this.props.userModel?.display_name || '',
+    });
   }
 }
+
+function mapStateToProps(state: IRootState) {
+  return {
+    userModel: state.user,
+  };
+}
+
+export default connect(mapStateToProps)(ProfileEditing);

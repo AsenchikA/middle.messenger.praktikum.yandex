@@ -1,6 +1,8 @@
 import { v4 as makeUUID } from 'uuid';
 import * as pug from 'pug';
 import EventBus from './event-bus';
+import cloneDeep from './cloneDeep';
+import isEqual from './is-equal';
 
 export default abstract class Block<T extends object = {}> {
   public static EVENTS = {
@@ -64,7 +66,6 @@ export default abstract class Block<T extends object = {}> {
   private _createResources() {
     const { tagName } = this._meta;
     this._element = this._createDocumentElement(tagName);
-    this._setAttributes();
   }
 
   private _setAttributes() {
@@ -112,9 +113,8 @@ export default abstract class Block<T extends object = {}> {
     }
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   public componentDidUpdate(oldProps: T, newProps: T) {
-    return true;
+    return !isEqual(oldProps, newProps);
   }
 
   public getContent() {
@@ -169,6 +169,7 @@ export default abstract class Block<T extends object = {}> {
       this._element.innerHTML = '';
       this._element.appendChild(block);
     }
+    this._setAttributes();
     this._addEvents();
   }
 
@@ -181,9 +182,11 @@ export default abstract class Block<T extends object = {}> {
           return true;
         }
 
+        const currentProps = cloneDeep(target);
+
         // eslint-disable-next-line no-param-reassign
         target[prop as keyof S] = value;
-        this.eventBus.emit(Block.EVENTS.FLOW_CDU);
+        this.eventBus.emit(Block.EVENTS.FLOW_CDU, currentProps, target);
         return true;
       },
       deleteProperty: () => {
@@ -207,5 +210,17 @@ export default abstract class Block<T extends object = {}> {
     Object.keys(this._events).forEach((eventName) => {
       this._element?.removeEventListener(eventName, this._events[eventName]);
     });
+  }
+
+  public show() {
+    if (this.element) {
+      this.element.style.display = '';
+    }
+  }
+
+  public hide() {
+    if (this.element) {
+      this.element.style.display = 'none';
+    }
   }
 }

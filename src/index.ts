@@ -5,36 +5,15 @@ import ProfileEditing from './pages/profile-editing/profile-editing';
 import Profile from './pages/profile/profile';
 import ServerError from './pages/server-error/server-error';
 import Signup from './pages/signup/signup';
-import render from './utils/render-DOM';
+import router from './utils/router/router';
 
-const loginPage = new Login();
-const signupPage = new Signup();
-const notFoundPage = new NotFound();
-const unavailablePage = new ServerError();
-const profilePage = new Profile();
-const profileEditingPage = new ProfileEditing();
-const chatsPage = new Chats();
-
-switch (document.location.pathname) {
-  case '/':
-  case '/login':
-    render('#root', loginPage);
-    break;
-  case '/signup':
-    render('#root', signupPage);
-    break;
-  case '/profile':
-    render('#root', profilePage);
-    break;
-  case '/profile-editing':
-    render('#root', profileEditingPage);
-    break;
-  case '/chats':
-    render('#root', chatsPage);
-    break;
-  case '/unavailable':
-    render('#root', unavailablePage);
-    break;
-  default:
-    render('#root', notFoundPage);
-}
+router
+  .use('/', Chats)
+  .use('/chats', Chats)
+  .use('/login', Login)
+  .use('/signup', Signup)
+  .use('/profile', Profile)
+  .use('/profile-editing', ProfileEditing)
+  .use('/unavailable', ServerError)
+  .setReserveRoute('/not-found', NotFound)
+  .start();

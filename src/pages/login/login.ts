@@ -3,8 +3,10 @@ import './login.css';
 import Input from '~src/components/input/Input';
 import loginTemplate from './login.template';
 import ValidatedInput from '~src/components/validated-input/validated-input';
-import SubmitButton from '~src/components/submit-button/submit-button';
+import Button, { EButtonAppearance } from '~src/components/button/button';
 import { VALIDATION_NAMES } from '~src/utils/validation';
+import authController from '~src/controllers/auth-controller';
+import { ILoginUserModel } from '~src/types';
 
 interface ILoginProps {
   loginField: Input;
@@ -35,21 +37,24 @@ export default class Login extends Block<ILoginProps> {
       className: 'login-form__input',
     });
 
-    const submitButton = new SubmitButton({
+    const submitButton = new Button({
+      appearance: EButtonAppearance.SUBMIT,
       text: 'Войти',
       className: 'login-form__main-button',
-      events: {
-        click: (event) => {
-          event.preventDefault();
-          loginField.validate();
-          passwordField.validate();
+      onClick: () => {
+        loginField.validate();
+        passwordField.validate();
 
-          // eslint-disable-next-line no-console
-          console.log('LOGIN_FORM DATA', {
+        const isFormValid = loginField.state.isValid && passwordField.state.isValid;
+
+        if (isFormValid) {
+          const loginModel: ILoginUserModel = {
             login: loginField.value,
             password: passwordField.value,
-          });
-        },
+          };
+
+          authController.signIn(loginModel);
+        }
       },
     });
 
