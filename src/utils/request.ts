@@ -31,11 +31,9 @@ export class HTTPTransport {
 
   public put = (url: string, body: any, options: IOptions = { method: METHOD_TYPES.PUT }) => this.request(url, options, body);
 
-  public post = (url: string, body: any, options: IOptions = { method: METHOD_TYPES.POST }) => this.request(url, options, body);
+  public post = (url: string, body?: any, options: IOptions = { method: METHOD_TYPES.POST }) => this.request(url, options, body);
 
-  public delete = (url: string, options: IOptions = { method: METHOD_TYPES.DELETE }) => {
-    this.request(url, options);
-  };
+  public delete = (url: string, body: any, options: IOptions = { method: METHOD_TYPES.DELETE }) => this.request(url, options, body);
 
   public request = (url: string, options: IOptions, body: any = null, queryObj: Record<string, unknown> = {}) => {
     const {
@@ -88,7 +86,7 @@ export class HTTPTransport {
 
       xhr.ontimeout = reject;
 
-      if (method === METHOD_TYPES.GET) {
+      if (method === METHOD_TYPES.GET || !body) {
         xhr.send();
       } else if (validHeaders['Content-Type'] === 'application/json;charset=UTF-8') {
         xhr.send(JSON.stringify(body));

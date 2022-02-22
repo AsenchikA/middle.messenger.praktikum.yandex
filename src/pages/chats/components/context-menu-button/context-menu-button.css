@@ -1,0 +1,23 @@
+.context-menu-button {
+  &__decorative-element {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background-color: var(--primary);
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+  }
+
+  &__decorative-element:nth-child(1) {
+    top: 5px;
+  }
+
+  &__decorative-element:nth-child(2) {
+    top: 11px;
+  }
+
+  &__decorative-element:nth-child(3) {
+    top: 17px;
+  }
+}

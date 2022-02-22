@@ -1,10 +1,13 @@
 const avatarModalTemplate = `
-div.avatar-modal
-  p.avatar-modal__title Загрузите аватар
+div.modal
+  p.modal__title Загрузите аватар
   form(method="post", enctype="multipart/form-data")
     div.avatar-modal__input-container
-      label(for='file').avatar-modal__input-label Выбрать файл
-      input.avatar-modal__input(type='file', id='file', accept='image/*')
+      if fileName
+        p.avatar-modal__file-name #{fileName}
+      else
+        label(for='uploadAvatarInput').avatar-modal__input-label Выбрать файл
+      != uploadInput
     != saveButton
     != cancelButton
 `;

@@ -13,7 +13,6 @@
     justify-content: flex-end;
     align-items: center;
     padding: 20px;
-    padding-bottom: 10px;
   }
 
   &__profile-link {
@@ -61,19 +60,6 @@
 
   &__creating-chat-button {
     width: 100%;
-  }
-}
-
-.search-box {
-  border-radius: 5px;
-  background-color: var(--neutral-background-color);
-  height: 32px;
-  padding: 10px;
-  color: var(--text-color-02);
-  border: none;
-
-  &:focus-visible {
-    outline: none;
   }
 }
 

@@ -5,9 +5,9 @@ import Input, { IInputProps } from '../input/Input';
 import validatedInputTemplate from './validated-input.template';
 
 interface IValidatedInputProps extends IInputProps {
-  defaultValue?: string;
   isValid: boolean;
   validationName: VALIDATION_NAMES;
+  defaultValue?: string;
   validationMessage?: string;
   withoutValidationMessage?: boolean;
 }
@@ -21,14 +21,14 @@ export default class ValidatedInput extends Block<IValidatedInputProps> {
     const isEqualProps = isEqual(oldProps, newProps);
 
     if (!isEqualProps) {
-      this.children.loginField.setProps({ defaultValue: newProps.defaultValue });
+      this.children.input.setProps({ defaultValue: newProps.defaultValue });
     }
 
     return !isEqualProps;
   }
 
   protected getChildren(): Record<string, Block<IInputProps>> {
-    const loginField = new Input({
+    const input = new Input({
       ...this.props,
       events: {
         blur: this.validate.bind(this),
@@ -36,7 +36,7 @@ export default class ValidatedInput extends Block<IValidatedInputProps> {
     });
 
     return {
-      loginField,
+      input,
     };
   }
 
@@ -47,7 +47,7 @@ export default class ValidatedInput extends Block<IValidatedInputProps> {
   }
 
   public get value(): string {
-    return this.children.loginField.value;
+    return this.children.input.value;
   }
 
   public validate(referenceValue?: string) {
@@ -55,12 +55,20 @@ export default class ValidatedInput extends Block<IValidatedInputProps> {
     const {
       isValid,
       message,
-    } = validate(validationName, this.children.loginField.value, referenceValue);
+    } = validate(validationName, this.children.input.value, referenceValue);
 
     this.setState({ isValid });
     this.setProps({
       validationMessage: isValid || withoutValidationMessage ? '' : message,
     });
+  }
+
+  public resetValue() {
+    const inputElement = (this.children.input as Input).getContent();
+
+    if (inputElement) {
+      inputElement.value = '';
+    }
   }
 
   public render(): DocumentFragment {

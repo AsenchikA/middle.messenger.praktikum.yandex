@@ -15,6 +15,13 @@ class UserController {
   public saveUserAvatar(form) {
     return api.user.saveUserAvatar(form);
   }
+
+  public changePassword(oldPassword: string, newPassword: string) {
+    return api.user.changePassword(oldPassword, newPassword)
+      .then(() => {
+        router.go('/profile');
+      });
+  }
 }
 
 const userController = new UserController();

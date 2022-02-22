@@ -1,6 +1,6 @@
 import Button, { EButtonAppearance } from '~src/components/button/button';
 import authController from '~src/controllers/auth-controller';
-import { IEditableUserModel } from '~src/types';
+import { IFullUserModel } from '~src/types';
 import Block from '~src/utils/block';
 import connect from '~src/utils/connect';
 import router from '~src/utils/router/router';
@@ -9,9 +9,10 @@ import Avatar from './components/avatar/avatar';
 import AvatarModal from './components/avatar-modal/avatar-modal';
 import profileTemplate from './profile.template';
 import isEqual from '~src/utils/is-equal';
+import BackPanel from '~src/components/back-panel/back-panel';
 
 interface IMapStateToProps {
-  userModel: IEditableUserModel | null,
+  userModel: IFullUserModel | null,
 }
 
 class Profile extends Block<IMapStateToProps> {
@@ -39,6 +40,12 @@ class Profile extends Block<IMapStateToProps> {
   }
 
   protected getChildren(): Record<string, Block> {
+    const backPanel = new BackPanel({
+      onClick: () => {
+        router.back();
+      },
+    });
+
     const logoutButton = new Button({
       appearance: EButtonAppearance.TEXT,
       text: 'Выйти',
@@ -57,6 +64,15 @@ class Profile extends Block<IMapStateToProps> {
       },
     });
 
+    const editPasswordButton = new Button({
+      appearance: EButtonAppearance.TEXT,
+      text: 'Изменить пароль',
+      className: 'profile-block__edit-button',
+      onClick: () => {
+        router.go('/password-editing');
+      },
+    });
+
     const avatarBlock = new Avatar({
       url: this.props.userModel ? `https://ya-praktikum.tech/api/v2/resources/${this.props.userModel.avatar}` : '',
       onClick: this.toggleModalVisibility.bind(this),
@@ -69,9 +85,11 @@ class Profile extends Block<IMapStateToProps> {
     });
 
     return {
+      backPanel,
       avatarBlock,
       avatarModal,
       editButton,
+      editPasswordButton,
       logoutButton,
     };
   }

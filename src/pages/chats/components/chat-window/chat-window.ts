@@ -1,15 +1,33 @@
 import ValidatedInput from '~src/components/validated-input/validated-input';
+import chatsController from '~src/controllers/chats-controller';
+import { IChatModel, IFullMessageModel, IFullUserModel } from '~src/types';
 import Block from '~src/utils/block';
+import connect from '~src/utils/connect';
+import { IRootState } from '~src/utils/store';
 import { VALIDATION_NAMES } from '~src/utils/validation';
 import ChatSendButton from '../chat-send-button/chat-send-button';
+import ChatUsersModal from '../chat-users-modal/chat-users-modal';
+import ContextMenu from '../context-menu/context-menu';
 import chatWindowTemplate from './chat-window.template';
 
-export default class ChatWindow extends Block {
-  constructor() {
-    super('div');
+interface IChatWindowProps {
+  chatModel: IChatModel | undefined;
+  chatUserList: IFullUserModel[];
+  messagesHistory: IFullMessageModel[];
+}
+
+class ChatWindow extends Block<IChatWindowProps> {
+  constructor(props: IChatWindowProps) {
+    super('div', props);
   }
 
-  protected getChildren(): Record<string, Block<{}>> {
+  protected getChildren(): Record<string, Block> {
+    const contextMenu = new ContextMenu({
+      onAddUser: this.toggleAddUserModalVisibility.bind(this),
+      onRemoveUser: this.toggleRemoveUserModalVisibility.bind(this),
+      onRemoveChat: this.removeChat.bind(this),
+    });
+
     const messageInput = new ValidatedInput({
       className: 'chat-window__message-input',
       isValid: false,
@@ -26,15 +44,31 @@ export default class ChatWindow extends Block {
           event.preventDefault();
           messageInput.validate();
 
-          // eslint-disable-next-line no-console
-          console.log('CHAT_FORM DATA', {
-            message: messageInput.value,
-          });
+          if (messageInput.state.isValid) {
+            chatsController.sendMessage(messageInput.value);
+          }
         },
       },
     });
 
+    const addUserModal = new ChatUsersModal({
+      headerText: 'Добавить пользователя',
+      buttonText: 'Добавить',
+      onButtonClick: this.addUserInChat.bind(this),
+      onClose: this.closeModals.bind(this),
+    });
+
+    const removeUserModal = new ChatUsersModal({
+      headerText: 'Удалить пользователя',
+      buttonText: 'Удалить',
+      onButtonClick: this.removeUserInChat.bind(this),
+      onClose: this.closeModals.bind(this),
+    });
+
     return {
+      addUserModal,
+      removeUserModal,
+      contextMenu,
       messageInput,
       sendButton,
     };
@@ -46,7 +80,61 @@ export default class ChatWindow extends Block {
     };
   }
 
+  public toggleAddUserModalVisibility() {
+    this.setState({ isAddUserModalVisible: !this.state.isAddUserModalVisible });
+  }
+
+  public toggleRemoveUserModalVisibility() {
+    this.setState({ isRemoveUserModalVisible: !this.state.isRemoveUserModalVisible });
+  }
+
+  public closeModals() {
+    this.setState({
+      isAddUserModalVisible: false,
+      isRemoveUserModalVisible: false,
+    });
+  }
+
+  public addUserInChat(login: string) {
+    chatsController
+      .addToChat(login, (this.props.chatModel as IChatModel).id)
+      .then(this.toggleAddUserModalVisibility.bind(this));
+  }
+
+  public removeUserInChat(login: string) {
+    chatsController
+      .removeFromChat(login, (this.props.chatModel as IChatModel).id)
+      .then(this.toggleRemoveUserModalVisibility.bind(this));
+  }
+
+  public removeChat() {
+    chatsController.remove((this.props.chatModel as IChatModel).id);
+  }
+
   public render(): DocumentFragment {
-    return this.compile(chatWindowTemplate);
+    const { chatModel, chatUserList } = this.props;
+    const userNameList = chatUserList.map((currentUser) => {
+      if (currentUser.display_name) {
+        return currentUser.display_name;
+      }
+
+      return `${currentUser.first_name} ${currentUser.second_name}`;
+    });
+
+    return this.compile(chatWindowTemplate, {
+      title: chatModel ? `${chatModel.title} (${userNameList.join(', ')})` : '',
+      avatarUrl: chatModel?.avatar ? `https://ya-praktikum.tech/api/v2/resources/${chatModel.avatar}` : '',
+      isAddUserModalVisible: this.state.isAddUserModalVisible,
+      isRemoveUserModalVisible: this.state.isRemoveUserModalVisible,
+      messageList: this.props.messagesHistory,
+    });
   }
 }
+
+const mapStateToProps = (state: IRootState) => ({
+  chatModel: state.chats.find((chat) => chat.id === state.activeChatId),
+  chatUserList: state.currentChatUserList,
+  messagesHistory: state.messagesHistory,
+});
+
+export default connect(mapStateToProps)(ChatWindow);

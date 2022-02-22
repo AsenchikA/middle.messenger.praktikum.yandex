@@ -1,0 +1,21 @@
+.context-menu {
+  position: relative;
+
+  &__button {
+    position: relative;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+  }
+
+  &__menu {
+    position: absolute;
+    right: 0;
+    top: 50px;
+    width: 200px;
+    box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.14);
+    border-radius: 12px;
+    background-color: var(--white);
+    padding: 15px;
+  }
+}

@@ -1,17 +1,19 @@
+import BackPanel from '~src/components/back-panel/back-panel';
 import Button, { EButtonAppearance } from '~src/components/button/button';
 import ValidatedInput from '~src/components/validated-input/validated-input';
 import authController from '~src/controllers/auth-controller';
 import userController from '~src/controllers/user-controller';
-import { IEditableUserModel } from '~src/types';
+import { IFullUserModel } from '~src/types';
 import Block from '~src/utils/block';
 import connect from '~src/utils/connect';
 import isEqual from '~src/utils/is-equal';
+import router from '~src/utils/router/router';
 import { IRootState } from '~src/utils/store';
 import { VALIDATION_NAMES } from '~src/utils/validation';
 import profileEditingTemplate from './profile-editing.template';
 
 interface IMapStateToProps {
-  userModel: IEditableUserModel;
+  userModel: IFullUserModel;
 }
 
 class ProfileEditing extends Block<IMapStateToProps> {
@@ -39,6 +41,12 @@ class ProfileEditing extends Block<IMapStateToProps> {
   }
 
   protected getChildren(): Record<string, Block> {
+    const backPanel = new BackPanel({
+      onClick: () => {
+        router.back();
+      },
+    });
+
     const emailInput = new ValidatedInput({
       defaultValue: this.props.userModel?.email,
       isValid: false,
@@ -128,6 +136,7 @@ class ProfileEditing extends Block<IMapStateToProps> {
     });
 
     return {
+      backPanel,
       emailInput,
       loginInput,
       firstNameInput,

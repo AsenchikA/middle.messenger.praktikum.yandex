@@ -2,6 +2,7 @@ import Button, { EButtonAppearance } from '~src/components/button/button';
 import userController from '~src/controllers/user-controller';
 import Block from '~src/utils/block';
 import avatarModalTemplate from './avatar-modal.template';
+import UploadInput from '../upload-input/upload-input';
 
 interface IAvatarModalProps {
   onClose: () => void;
@@ -19,22 +20,24 @@ export default class AvatarModal extends Block<IAvatarModalProps> {
     };
   }
 
-  protected getChildren(): Record<string, Block<{}>> {
+  protected getChildren(): Record<string, Block> {
+    const uploadInput = new UploadInput({
+      id: 'uploadAvatarInput',
+      onChange: this.changeImage.bind(this),
+    });
+
     const saveButton = new Button({
       appearance: EButtonAppearance.SUBMIT,
       text: 'Сохранить',
       className: 'avatar-modal__submit-button',
       onClick: () => {
-        const inputElement = this.element?.getElementsByClassName('avatar-modal__input');
-        console.log(Array.from(inputElement)[0].files);
+        const inputElement = uploadInput.element;
 
-        if (inputElement && Array.from(inputElement)[0]?.files.length > 0) {
-          const avatarFile = Array.from(inputElement)[0].files[0];
-
+        if (inputElement && inputElement?.files.length > 0) {
           const form = new FormData();
-          form.append('avatar', avatarFile);
-          console.log(form, avatarFile, form.getAll('avatar'));
-          userController.saveUserAvatar(form).then(this.props.onSave);
+          form.append('avatar', inputElement.files[0]);
+
+          userController.saveUserAvatar(form).then(this.onSave.bind(this));
         }
       },
     });
@@ -43,16 +46,33 @@ export default class AvatarModal extends Block<IAvatarModalProps> {
       appearance: EButtonAppearance.TEXT,
       text: 'Отмена',
       className: 'avatar-modal__close-button',
-      onClick: this.props.onClose,
+      onClick: this.onClose.bind(this),
     });
 
     return {
       cancelButton,
       saveButton,
+      uploadInput,
     };
   }
 
+  public changeImage(event: Event) {
+    this.setState({ fileName: event?.target?.files[0]?.name });
+  }
+
+  public onSave() {
+    (this.children.uploadInput as UploadInput).resetValue();
+    this.setState({ fileName: '' });
+    this.props.onSave();
+  }
+
+  public onClose() {
+    (this.children.uploadInput as UploadInput).resetValue();
+    this.setState({ fileName: '' });
+    this.props.onClose();
+  }
+
   public render(): DocumentFragment {
-    return this.compile(avatarModalTemplate);
+    return this.compile(avatarModalTemplate, { fileName: this.state.fileName });
   }
 }

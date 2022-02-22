@@ -1,18 +1,25 @@
 import Button, { EButtonAppearance } from '~src/components/button/button';
 import ValidatedInput from '~src/components/validated-input/validated-input';
+import authController from '~src/controllers/auth-controller';
 import chatsController from '~src/controllers/chats-controller';
 import ChatList from '~src/pages/chats/components/chat-list/chat-list';
 import Block from '~src/utils/block';
+import connect from '~src/utils/connect';
 import router from '~src/utils/router/router';
+import { IRootState } from '~src/utils/store';
 import { VALIDATION_NAMES } from '~src/utils/validation';
 import chatsTemplate from './chats.template';
 import ChatWindow from './components/chat-window/chat-window';
 
-export default class Chats extends Block {
-  constructor() {
-    super('div');
-    this.setState({ activeChatId: null });
+interface IChatsProps {
+  activeChatId: number;
+}
+
+class Chats extends Block<IChatsProps> {
+  constructor(props: IChatsProps) {
+    super('div', props);
     chatsController.getList();
+    authController.getUser();
   }
 
   protected getChildren(): Record<string, Block> {
@@ -24,9 +31,11 @@ export default class Chats extends Block {
         router.go('/profile');
       },
     });
+
     const chatList = new ChatList({
       onChatClick: (id: number) => this.setState({ activeChatId: id }),
     });
+
     const chatWindow = new ChatWindow();
 
     const nameInput = new ValidatedInput({
@@ -42,13 +51,7 @@ export default class Chats extends Block {
       appearance: EButtonAppearance.SUBMIT,
       text: 'Создать',
       className: 'sidebar__creating-chat-button',
-      onClick: () => {
-        nameInput.validate();
-
-        if (nameInput.state.isValid) {
-          chatsController.create(nameInput.value);
-        }
-      },
+      onClick: this.createChat.bind(this),
     });
 
     return {
@@ -66,7 +69,25 @@ export default class Chats extends Block {
     };
   }
 
+  public createChat() {
+    const { nameInput } = this.children;
+
+    (nameInput as ValidatedInput).validate();
+
+    if (nameInput.state.isValid) {
+      chatsController.create(nameInput.value).then(() => {
+        (this.children.nameInput as ValidatedInput).resetValue();
+      });
+    }
+  }
+
   public render(): DocumentFragment {
-    return this.compile(chatsTemplate, { activeChatId: this.state.activeChatId });
+    return this.compile(chatsTemplate, { activeChatId: this.props.activeChatId });
   }
 }
+
+const mapStateToProps = (state: IRootState) => ({
+  activeChatId: state.activeChatId,
+});
+
+export default connect(mapStateToProps)(Chats);

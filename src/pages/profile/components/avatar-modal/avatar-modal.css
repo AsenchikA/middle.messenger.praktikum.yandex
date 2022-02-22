@@ -27,10 +27,6 @@
     color: var(--text-color-01);
     margin-bottom: 40px;
   }
-  
-  &__input {
-    /* display: none; */
-  }
 
   &__input-label {
     font-size: 14px;
@@ -50,5 +46,10 @@
   &__close-button {
     width: 100%;
     color: var(--error-color);
+  }
+
+  &__file-name {
+    font-size: 14px;
+    color: var(--text-color-02);
   }
 }

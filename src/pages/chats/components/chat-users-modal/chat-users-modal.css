@@ -1,0 +1,15 @@
+.chat-users-modal {
+  &__login-input {
+    width: 100%;
+    margin-bottom: 35px;
+  }
+
+  &__button {
+    width: 100%;
+  }
+
+  &__close-button {
+    width: 100%;
+    color: var(--error-color);
+  }
+}

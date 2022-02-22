@@ -11,4 +11,12 @@ export default class UserApi {
   public saveUserAvatar(form) {
     return userApiInstance.put('/profile/avatar', form, { method: METHOD_TYPES.PUT, withoutContentType: true });
   }
+
+  public searchByLogin(login: string) {
+    return userApiInstance.post('/search', { login }).then((data) => JSON.parse(data));
+  }
+
+  public changePassword(oldPassword: string, newPassword: string) {
+    return userApiInstance.put('/password', { oldPassword, newPassword });
+  }
 }

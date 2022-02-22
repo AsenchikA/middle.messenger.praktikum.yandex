@@ -1,0 +1,44 @@
+.back-panel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 64px;
+  background-color: var(--nav-background-color);
+  border-right: 1px solid var(--border-color);
+  cursor: pointer;
+
+  &__button {
+    position: relative;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background-color: var(--primary);
+  }
+
+  &__button::before {
+    content: '';
+    position: absolute;
+    left: 9px;
+    top: 0;
+    bottom: 0;
+    margin: auto 0;
+    width: 6px;
+    height: 6px;
+    border-top: 1px solid var(--white);
+    border-left: 1px solid var(--white);
+    transform: rotate(-45deg);
+  }
+
+  &__button::after {
+    content: '';
+    position: absolute;
+    left: 9px;
+    top: 0;
+    bottom: 0;
+    margin: auto 0;
+    width: 11px;
+    height: 1px;
+    background-color: var(--white);
+  }
+}

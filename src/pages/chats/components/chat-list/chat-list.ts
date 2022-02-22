@@ -1,9 +1,10 @@
 import * as pug from 'pug';
+import chatsController from '~src/controllers/chats-controller';
 import { IChatModel } from '~src/types';
 import Block from '~src/utils/block';
 import connect from '~src/utils/connect';
 import isEqual from '~src/utils/is-equal';
-import { IRootState } from '~src/utils/store';
+import store, { IRootState } from '~src/utils/store';
 import ChatCard from '../chat-card/chat-card';
 import chatListTemplate from './chat-list.template';
 
@@ -42,10 +43,8 @@ class ChatList extends Block<TChatListProps> {
       new ChatCard({
         name: chatItem.title,
         message: chatItem.last_message ? `${chatItem.last_message.user.first_name}: ${chatItem.last_message.content}` : '',
-        events: {
-          click: () => {
-            this.props.onChatClick(chatItem.id);
-          },
+        onClick: () => {
+          chatsController.changeActiveChatId(chatItem.id);
         },
       }),
     ]));

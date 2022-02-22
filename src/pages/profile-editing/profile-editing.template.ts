@@ -1,6 +1,5 @@
 const profileEditingTemplate = `
-div.back-block
-  a(href='/').back-block__button
+!= backPanel
 main.profile-block-container
   div.profile-block
     img(src=avatarUrl).profile-block__static-avatar

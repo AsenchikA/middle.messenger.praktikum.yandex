@@ -1,6 +1,5 @@
 const profileTemplate = `
-div.back-block
-  a(href='/').back-block__button
+!= backPanel
 main.profile-block-container
   div.profile-block
     != avatarBlock
@@ -29,6 +28,8 @@ main.profile-block-container
       ul.profile-block__button-list
         li.profile-block__button-item
           != editButton
+        li.profile-block__button-item
+          != editPasswordButton
         li.profile-block__button-item
           != logoutButton
 if isModalVisible

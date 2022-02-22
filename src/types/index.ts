@@ -14,9 +14,10 @@ export interface ISavingUserModel extends IUserModel {
   display_name: string;
 }
 
-export interface IEditableUserModel extends IUserModel {
+export interface IFullUserModel extends IUserModel {
   avatar: string;
   display_name: string;
+  id: number;
 }
 
 export interface ILoginUserModel {
@@ -30,11 +31,27 @@ export interface IChatModel {
   title: string,
   avatar: string | null,
   unread_count: number,
-  last_message: IMessageModel | null,
+  last_message: IShortMessageModel | null,
 }
 
-export interface IMessageModel {
+export interface IShortMessageModel {
   user: IUserModel,
   time: string,
   content: string,
+}
+
+export interface IFullMessageModel {
+  id: number,
+  user_id: number,
+  chat_id: number,
+  type: 'message' | 'file',
+  time: string,
+  content: string,
+  is_read: boolean,
+  file: any,
+}
+
+export interface IFormattedFullMessageModel {
+  isMine: boolean;
+  time: Date;
 }

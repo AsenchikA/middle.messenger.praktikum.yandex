@@ -2,15 +2,20 @@
 @import '../src/components/error-block/error-block.css';
 @import '../src/components/validated-input/validated-input.css';
 @import '../src/components/button/button.css';
+@import '../src/components/back-panel/back-panel.css';
 @import '../src/pages/chats/components/chat-card/chat-card.css';
 @import '../src/pages/chats/components/chat-list/chat-list.css';
 @import '../src/pages/chats/components/chat-window/chat-window.css';
 @import '../src/pages/chats/components/chat-send-button/chat-send-button.css';
+@import '../src/pages/chats/components/context-menu/context-menu.css';
+@import '../src/pages/chats/components/context-menu-button/context-menu-button.css';
+@import '../src/pages/chats/components/chat-users-modal/chat-users-modal.css';
 @import '../src/pages/login/login.css';
 @import '../src/pages/signup/signup.css';
 @import '../src/pages/profile/profile.css';
 @import '../src/pages/profile/components/avatar-modal/avatar-modal.css';
 @import '../src/pages/profile/components/avatar/avatar.css';
+@import '../src/pages/profile/components/upload-input/upload-input.css';
 @import '../src/pages/not-found/not-found.css';
 @import '../src/pages/server-error/server-error.css';
 @import '../src/pages/chats/chats.css';
@@ -57,4 +62,26 @@ p {
   --border-color: #eaeaea;
   --neutral-background-color: #efefef;
   --error-color: #ff2f2f;
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--white);
+  border-radius: 12px;
+  box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.14);
+  width: 340px;
+  z-index: 2;
+  padding: 40px 30px;
+  text-align: center;
+
+  &__title {
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 20px;
+    color: var(--text-color-01);
+    margin-bottom: 40px;
+  }
 }

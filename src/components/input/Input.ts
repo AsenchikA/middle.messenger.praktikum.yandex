@@ -2,10 +2,10 @@ import Block from '../../utils/block';
 import template from './input.template';
 
 export interface IInputProps {
-  defaultValue?: string;
-  placeholder: string;
   name: string;
   type: string;
+  defaultValue?: string;
+  placeholder?: string;
   className?: string;
   events?: Record<string, (e: Event) => void>;
 }
@@ -19,7 +19,7 @@ export default class Input extends Block<IInputProps> {
     return {
       class: `input ${this.props.className || ''}`,
       value: this.props.defaultValue || '',
-      placeholder: this.props.placeholder,
+      placeholder: this.props.placeholder || '',
       inputName: this.props.name,
       type: this.props.type,
     };

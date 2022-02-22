@@ -1,4 +1,5 @@
 import api from '~src/api/api';
+import { IFormattedFullMessageModel, IFullMessageModel, IFullUserModel } from '~src/types';
 import store from '~src/utils/store';
 
 class ChatsController {
@@ -9,9 +10,73 @@ class ChatsController {
   }
 
   public create(title: string) {
-    api.chats.create(title).then(() => {
+    return api.chats.create(title).then(() => {
       this.getList();
     });
+  }
+
+  public addToChat(login: string, chatId: number) {
+    return api.user.searchByLogin(login)
+      .then((userList: IFullUserModel[]) => userList[0]?.id)
+      .then((userId: number | undefined) => {
+        if (userId) {
+          api.chats.addToChat([userId], chatId).then(() => {
+            this.getChatUsers(chatId);
+          });
+        }
+      });
+  }
+
+  public removeFromChat(login: string, chatId: number) {
+    return api.user.searchByLogin(login)
+      .then((userList: IFullUserModel[]) => userList[0]?.id)
+      .then((userId: number | undefined) => {
+        if (userId) {
+          api.chats.removeFromChat([userId], chatId).then(() => {
+            this.getChatUsers(chatId);
+          });
+        }
+      });
+  }
+
+  public remove(chatId: number) {
+    return api.chats.remove(chatId).then(() => {
+      store.set('activeChatId', 0);
+      this.getList();
+    });
+  }
+
+  public getChatUsers(chatId: number) {
+    return api.chats.getChatUsers(chatId).then((users) => {
+      store.set('currentChatUserList', users);
+    });
+  }
+
+  public changeActiveChatId(chatId: number) {
+    const { user } = store.getState();
+
+    store.set('activeChatId', chatId);
+    this.getChatUsers(chatId);
+    api.chats.getToken(chatId)
+      .then((token) => {
+        api.chats.openChatConnection((user as IFullUserModel).id, chatId, token, this.saveMessagesHistory);
+      });
+  }
+
+  public sendMessage(message: string) {
+    api.chats.sendMessage(message);
+  }
+
+  public saveMessagesHistory(messages: IFullMessageModel[]) {
+    const { messagesHistory, user } = store.getState();
+    const userId = (user as IFullUserModel).id;
+    const updatedMessages: IFormattedFullMessageModel[] = messages.reverse().map((message) => ({
+      ...message,
+      isMine: userId === message.user_id,
+      time: new Date(message.time).toLocaleTimeString(),
+    }));
+    console.log('saveMessagesHistory', messagesHistory.concat(updatedMessages));
+    store.set('messagesHistory', messagesHistory.concat(updatedMessages));
   }
 }
 
