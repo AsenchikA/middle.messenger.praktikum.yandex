@@ -59,7 +59,12 @@ class ChatsController {
     this.getChatUsers(chatId);
     api.chats.getToken(chatId)
       .then((token) => {
-        api.chats.openChatConnection((user as IFullUserModel).id, chatId, token, this.saveMessagesHistory);
+        api.chats.openChatConnection(
+          (user as IFullUserModel).id,
+          chatId,
+          token,
+          this.saveMessagesHistory,
+        );
       });
   }
 
@@ -75,7 +80,6 @@ class ChatsController {
       isMine: userId === message.user_id,
       time: new Date(message.time).toLocaleTimeString(),
     }));
-    console.log('saveMessagesHistory', messagesHistory.concat(updatedMessages));
     store.set('messagesHistory', messagesHistory.concat(updatedMessages));
   }
 }

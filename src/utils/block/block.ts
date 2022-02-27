@@ -1,8 +1,8 @@
 import { v4 as makeUUID } from 'uuid';
 import * as pug from 'pug';
-import EventBus from './event-bus';
-import cloneDeep from './cloneDeep';
-import isEqual from './is-equal';
+import EventBus from '../event-bus';
+import cloneDeep from '../cloneDeep';
+import isEqual from '../is-equal';
 
 export default abstract class Block<T extends object = {}> {
   public static EVENTS = {

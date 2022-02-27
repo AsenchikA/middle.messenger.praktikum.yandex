@@ -13,7 +13,7 @@ function isArrayOrObject(value: unknown): value is [] | Record<string, unknown> 
   return isPlainObject(value) || isArray(value);
 }
 
-export default function isEqual(a: object, b: object): boolean {
+export default function isEqual(a: Record<string, unknown>, b: Record<string, unknown>): boolean {
   if (!isArrayOrObject(a) || !isArrayOrObject(b)) {
     return a === b;
   }
@@ -22,5 +22,6 @@ export default function isEqual(a: object, b: object): boolean {
     return false;
   }
 
-  return Object.keys(a).every((key) => isEqual(a[key] as Record<string, unknown>, b[key] as Record<string, unknown>));
+  return Object.keys(a)
+    .every((key) => isEqual(a[key] as Record<string, unknown>, b[key] as Record<string, unknown>));
 }

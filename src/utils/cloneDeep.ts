@@ -22,7 +22,9 @@ function cloneDeep<T extends object = object>(obj: T): T {
     return obj.map((key) => cloneDeep(key)) as T;
   }
 
-  return Object.fromEntries(Object.keys(obj).map((key) => [key, cloneDeep(obj[key] as Partial<T>)])) as T;
+  return Object.fromEntries(
+    Object.keys(obj).map((key) => [key, cloneDeep(obj[key] as Partial<T>)]),
+  ) as T;
 }
 
 export default cloneDeep;

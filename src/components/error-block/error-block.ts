@@ -1,4 +1,4 @@
-import Block from '~src/utils/block';
+import Block from '~src/utils/block/block';
 import template from './error-block.template';
 
 interface IErrorBlockProps {

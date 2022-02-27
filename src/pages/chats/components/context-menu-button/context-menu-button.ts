@@ -1,4 +1,4 @@
-import Block from '~src/utils/block';
+import Block from '~src/utils/block/block';
 import contextMenuButtonTemplate from './context-menu-button.template';
 
 interface IContextMenuButtonProps {

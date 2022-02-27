@@ -1,4 +1,4 @@
-import Block from '~src/utils/block';
+import Block from '~src/utils/block/block';
 import avatarTemplate from './avatar.template';
 
 interface IAvatarProps {

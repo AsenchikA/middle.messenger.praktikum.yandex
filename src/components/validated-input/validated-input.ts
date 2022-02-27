@@ -1,4 +1,4 @@
-import Block from '~src/utils/block';
+import Block from '~src/utils/block/block';
 import isEqual from '~src/utils/is-equal';
 import { validate, VALIDATION_NAMES } from '~src/utils/validation';
 import Input, { IInputProps } from '../input/Input';

@@ -1,4 +1,4 @@
-import Block from '~src/utils/block'
+import Block from '~src/utils/block/block';
 import backPanelTemplate from './back-panel.template';
 
 interface IBackPanelProps {

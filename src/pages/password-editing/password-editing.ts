@@ -4,7 +4,7 @@ import ValidatedInput from '~src/components/validated-input/validated-input';
 import authController from '~src/controllers/auth-controller';
 import userController from '~src/controllers/user-controller';
 import { IFullUserModel } from '~src/types';
-import Block from '~src/utils/block';
+import Block from '~src/utils/block/block';
 import connect from '~src/utils/connect';
 import router from '~src/utils/router/router';
 import { IRootState } from '~src/utils/store';

@@ -1,5 +1,5 @@
 import ErrorBlock from '~src/components/error-block/error-block';
-import Block from '~src/utils/block';
+import Block from '~src/utils/block/block';
 import serverErrorTemplate from './server-error.template';
 
 export default class ServerError extends Block {

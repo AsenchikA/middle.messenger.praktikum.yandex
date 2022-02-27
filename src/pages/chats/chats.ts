@@ -3,7 +3,7 @@ import ValidatedInput from '~src/components/validated-input/validated-input';
 import authController from '~src/controllers/auth-controller';
 import chatsController from '~src/controllers/chats-controller';
 import ChatList from '~src/pages/chats/components/chat-list/chat-list';
-import Block from '~src/utils/block';
+import Block from '~src/utils/block/block';
 import connect from '~src/utils/connect';
 import router from '~src/utils/router/router';
 import { IRootState } from '~src/utils/store';

@@ -1,5 +1,5 @@
 import { ISavingUserModel } from '~src/types';
-import { HTTPTransport, METHOD_TYPES } from '~src/utils/request';
+import { HTTPTransport, METHOD_TYPES } from '~src/utils/request/request';
 
 const userApiInstance = new HTTPTransport('/user');
 

@@ -1,6 +1,6 @@
 import Button, { EButtonAppearance } from '~src/components/button/button';
 import userController from '~src/controllers/user-controller';
-import Block from '~src/utils/block';
+import Block from '~src/utils/block/block';
 import avatarModalTemplate from './avatar-modal.template';
 import UploadInput from '../upload-input/upload-input';
 

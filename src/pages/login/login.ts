@@ -1,5 +1,4 @@
-import Block from '~src/utils/block';
-import './login.css';
+import Block from '~src/utils/block/block';
 import Input from '~src/components/input/Input';
 import loginTemplate from './login.template';
 import ValidatedInput from '~src/components/validated-input/validated-input';

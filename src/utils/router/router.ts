@@ -1,4 +1,4 @@
-import Block from '../block';
+import Block from '../block/block';
 import Route from './route';
 
 interface BlockConstructor {
@@ -25,6 +25,9 @@ export class Router {
 
       Router.__instance = this;
     }
+
+    // eslint-disable-next-line no-constructor-return
+    return Router.__instance;
   }
 
   public use(pathname: string, block: BlockConstructor) {
@@ -42,6 +45,7 @@ export class Router {
   }
 
   private _onRoute(pathname: string) {
+    console.log('_onRoute', pathname);
     const route = this.getRoute(pathname);
     if (this._currentRoute) {
       this._currentRoute.leave();
@@ -58,6 +62,7 @@ export class Router {
   }
 
   public go(pathname: string) {
+    console.log('go pathname', pathname, this.history, window.history);
     this.history.pushState({}, '', pathname);
     this._onRoute(pathname);
   }

@@ -53,5 +53,5 @@ export interface IFullMessageModel {
 
 export interface IFormattedFullMessageModel {
   isMine: boolean;
-  time: Date;
+  time: string;
 }

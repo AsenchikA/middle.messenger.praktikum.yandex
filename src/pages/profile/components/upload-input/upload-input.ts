@@ -1,4 +1,4 @@
-import Block from '~src/utils/block';
+import Block from '~src/utils/block/block';
 import uploadInputTemplate from './upload-input.template';
 
 interface IUploadInputProps {

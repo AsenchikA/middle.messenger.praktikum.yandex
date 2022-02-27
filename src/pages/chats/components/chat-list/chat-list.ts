@@ -1,7 +1,7 @@
 import * as pug from 'pug';
 import chatsController from '~src/controllers/chats-controller';
 import { IChatModel } from '~src/types';
-import Block from '~src/utils/block';
+import Block from '~src/utils/block/block';
 import connect from '~src/utils/connect';
 import isEqual from '~src/utils/is-equal';
 import store, { IRootState } from '~src/utils/store';

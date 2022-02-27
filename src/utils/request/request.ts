@@ -1,4 +1,4 @@
-import router from "./router/router";
+import router from '../router/router';
 
 export enum METHOD_TYPES {
   GET = 'GET',
@@ -27,15 +27,35 @@ export class HTTPTransport {
     this._baseUrl = `${this._baseUrl}${instanceUrl}`;
   }
 
-  public get = (url: string, options: IOptions = { method: METHOD_TYPES.GET }) => this.request(url, options);
+  public get = (
+    url: string,
+    options: IOptions = { method: METHOD_TYPES.GET },
+  ) => this.request(url, options);
 
-  public put = (url: string, body: any, options: IOptions = { method: METHOD_TYPES.PUT }) => this.request(url, options, body);
+  public put = (
+    url: string,
+    body: any,
+    options: IOptions = { method: METHOD_TYPES.PUT },
+  ) => this.request(url, options, body);
 
-  public post = (url: string, body?: any, options: IOptions = { method: METHOD_TYPES.POST }) => this.request(url, options, body);
+  public post = (
+    url: string,
+    body?: any,
+    options: IOptions = { method: METHOD_TYPES.POST },
+  ) => this.request(url, options, body);
 
-  public delete = (url: string, body: any, options: IOptions = { method: METHOD_TYPES.DELETE }) => this.request(url, options, body);
+  public delete = (
+    url: string,
+    body: any,
+    options: IOptions = { method: METHOD_TYPES.DELETE },
+  ) => this.request(url, options, body);
 
-  public request = (url: string, options: IOptions, body: any = null, queryObj: Record<string, unknown> = {}) => {
+  public request = (
+    url: string,
+    options: IOptions,
+    body: any = null,
+    queryObj: Record<string, unknown> = {},
+  ): Promise<string> => {
     const {
       method, timeout, headers,
     } = options;

@@ -1,4 +1,4 @@
-import cloneDeep from "./cloneDeep";
+import cloneDeep from './cloneDeep';
 
 type Indexed<T = unknown> = {
   [key in string]: T;
@@ -16,15 +16,17 @@ function merge(lhs: Indexed, rhs: Indexed): Indexed {
     return cloneDeep(rhs);
   }
 
+  const resultObj = { ...lhs };
+
   Object.keys(rhs).forEach((key) => {
-    if (isPlainObject(rhs[key]) && lhs.hasOwnProperty(key)) {
-      lhs[key] = merge(lhs[key] as Indexed, rhs[key] as Indexed);
+    if (isPlainObject(rhs[key]) && Object.prototype.hasOwnProperty.call(lhs, key)) {
+      resultObj[key] = merge(lhs[key] as Indexed, rhs[key] as Indexed);
     } else {
-      lhs[key] = rhs[key];
+      resultObj[key] = rhs[key];
     }
   });
 
-  return lhs;
+  return resultObj;
 }
 
 function set(object: Indexed | unknown, path: string, value: unknown): Indexed | unknown {
