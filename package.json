@@ -41,6 +41,7 @@
     "uuid": "^8.3.2"
   },
   "devDependencies": {
+    "@parcel/config-default": "^2.3.2",
     "@parcel/transformer-pug": "^2.1.1",
     "@types/chai": "^4.3.0",
     "@types/mocha": "^9.1.0",
