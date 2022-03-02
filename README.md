@@ -16,6 +16,7 @@
 - `npm install` — установка стабильной версии,
 - `npm run dev` — запуск проекта локально,
 - `npm run build` — сборка проекта,
-- `npm run start` — сборка проекта и запуск express-сервера на 3000 порту.
+- `npm run start` — сборка проекта и запуск express-сервера на 3000 порту,
+- `npm run test` — запуск тестов.
 
-[Pull request, sprint 2](https://github.com/AsenchikA/middle.messenger.praktikum.yandex/pull/2)
+[Pull request, sprint 3](https://github.com/AsenchikA/middle.messenger.praktikum.yandex/pull/3)
