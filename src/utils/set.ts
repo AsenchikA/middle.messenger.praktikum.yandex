@@ -29,7 +29,7 @@ function merge(lhs: Indexed, rhs: Indexed): Indexed {
   return resultObj;
 }
 
-function set(object: Indexed | unknown, path: string, value: unknown): Indexed | unknown {
+function set(object: Indexed, path: string, value: unknown): Indexed | Error {
   if (typeof path !== 'string') {
     return new Error();
   }
@@ -37,7 +37,7 @@ function set(object: Indexed | unknown, path: string, value: unknown): Indexed |
     return object;
   }
 
-  const objWithNewValue = path.split('.').reduceRight((obj, currentValue) => ({ [currentValue]: obj }), value);
+  const objWithNewValue = path.split('.').reduceRight((obj, currentValue) => ({ [currentValue]: obj }), value) as Indexed;
 
   if (object === null) {
     return objWithNewValue;

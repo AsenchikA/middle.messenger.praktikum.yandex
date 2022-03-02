@@ -10,8 +10,6 @@ export class Router {
 
   public routes: Route[];
 
-  public history: History;
-
   private _currentRoute: Route | null;
 
   private _rootQuery: string;
@@ -19,7 +17,6 @@ export class Router {
   constructor(rootQuery: string) {
     if (!Router.__instance) {
       this.routes = [];
-      this.history = window.history;
       this._currentRoute = null;
       this._rootQuery = rootQuery;
 
@@ -45,7 +42,6 @@ export class Router {
   }
 
   private _onRoute(pathname: string) {
-    console.log('_onRoute', pathname);
     const route = this.getRoute(pathname);
     if (this._currentRoute) {
       this._currentRoute.leave();
@@ -62,17 +58,16 @@ export class Router {
   }
 
   public go(pathname: string) {
-    console.log('go pathname', pathname, this.history, window.history);
-    this.history.pushState({}, '', pathname);
+    window.history.pushState({}, '', pathname);
     this._onRoute(pathname);
   }
 
   public back() {
-    this.history.back();
+    window.history.back();
   }
 
   public forward() {
-    this.history.forward();
+    window.history.forward();
   }
 
   public getRoute(pathname: string) {

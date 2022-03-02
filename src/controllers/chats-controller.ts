@@ -56,6 +56,7 @@ class ChatsController {
     const { user } = store.getState();
 
     store.set('activeChatId', chatId);
+    store.set('messagesHistory', []);
     this.getChatUsers(chatId);
     api.chats.getToken(chatId)
       .then((token) => {

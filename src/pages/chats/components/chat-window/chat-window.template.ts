@@ -8,7 +8,6 @@ div.chat-window__header
     div.chat-window__header-name #{title}
   != contextMenu
 div.chat-window__history
-  div.chat-window__date 19 июня
   each val in messageList
     if val.isMine
       div.chat-window__message.chat-window__message--mine
