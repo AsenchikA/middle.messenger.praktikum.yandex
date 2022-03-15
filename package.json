@@ -9,12 +9,8 @@
     "stylelint": "stylelint src/**/*.css --fix",
     "eslint": "eslint src/**/*.ts --fix",
     "lint": "npm run stylelint && npm run eslint",
-    "test": "./node_modules/.bin/mocha -r tsconfig-paths/register -r jsdom-global/register"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run lint"
-    }
+    "test": "./node_modules/.bin/mocha -r tsconfig-paths/register -r jsdom-global/register",
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
