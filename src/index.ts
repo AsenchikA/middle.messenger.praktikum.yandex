@@ -7,6 +7,7 @@ import Profile from './pages/profile/profile';
 import ServerError from './pages/server-error/server-error';
 import Signup from './pages/signup/signup';
 import router from './utils/router/router';
+import './index.css';
 
 router
   .use('/', Chats)

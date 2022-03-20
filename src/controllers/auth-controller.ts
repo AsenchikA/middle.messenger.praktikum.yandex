@@ -1,7 +1,7 @@
-import api from '~src/api/api';
-import { ILoginUserModel, ISignUpUserModel } from '~src/types';
-import router from '~src/utils/router/router';
-import store from '~src/utils/store';
+import api from '../api/api';
+import { ILoginUserModel, ISignUpUserModel } from '../types';
+import router from '../utils/router/router';
+import store from '../utils/store';
 import chatsController from './chats-controller';
 
 class AuthController {

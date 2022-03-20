@@ -30,7 +30,7 @@ export class HTTPTransport {
   public get = (
     url: string,
     options: IOptions = { method: METHOD_TYPES.GET },
-  ) => this.request(url, options);
+  ) => this.request<string>(url, options);
 
   public put = (
     url: string,
@@ -38,11 +38,11 @@ export class HTTPTransport {
     options: IOptions = { method: METHOD_TYPES.PUT },
   ) => this.request(url, options, body);
 
-  public post = (
+  public post = <T>(
     url: string,
     body?: any,
     options: IOptions = { method: METHOD_TYPES.POST },
-  ) => this.request(url, options, body);
+  ) => this.request<T>(url, options, body);
 
   public delete = (
     url: string,
@@ -50,12 +50,12 @@ export class HTTPTransport {
     options: IOptions = { method: METHOD_TYPES.DELETE },
   ) => this.request(url, options, body);
 
-  public request = (
+  public request = <T>(
     url: string,
     options: IOptions,
     body: any = null,
     queryObj: Record<string, unknown> = {},
-  ): Promise<string> => {
+  ): Promise<T> => {
     const {
       method, timeout, headers,
     } = options;

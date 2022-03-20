@@ -29,21 +29,21 @@ function merge(lhs: Indexed, rhs: Indexed): Indexed {
   return resultObj;
 }
 
-function set(object: Indexed, path: string, value: unknown): Indexed | Error {
+function set<T>(object: T, path: string, value: unknown): T {
   if (typeof path !== 'string') {
-    return new Error();
+    throw new Error();
   }
   if (typeof object !== 'object') {
     return object;
   }
 
-  const objWithNewValue = path.split('.').reduceRight((obj, currentValue) => ({ [currentValue]: obj }), value) as Indexed;
+  const objWithNewValue = path.split('.').reduceRight((obj, currentValue) => ({ [currentValue]: obj }), value) as T;
 
   if (object === null) {
     return objWithNewValue;
   }
 
-  const result = merge(object as Indexed, objWithNewValue as Indexed);
+  const result = merge(object as Indexed, objWithNewValue as Indexed) as T;
   return result;
 }
 

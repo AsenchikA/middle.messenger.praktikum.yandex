@@ -1,5 +1,6 @@
-import Block from '~src/utils/block/block';
+import Block from '../../../../../src/utils/block/block';
 import chatSendButtonTemplate from './chat-send-button.template';
+import './chat-send-button.css';
 
 interface IChatSendButtonProps {
   events: Record<string, (e: Event) => void>;

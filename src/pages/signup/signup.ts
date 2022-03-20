@@ -1,10 +1,11 @@
-import Button, { EButtonAppearance } from '~src/components/button/button';
-import ValidatedInput from '~src/components/validated-input/validated-input';
-import authController from '~src/controllers/auth-controller';
-import { ISignUpUserModel } from '~src/types';
-import Block from '~src/utils/block/block';
-import { VALIDATION_NAMES } from '~src/utils/validation';
+import Button, { EButtonAppearance } from '../../../src/components/button/button';
+import ValidatedInput from '../../../src/components/validated-input/validated-input';
+import authController from '../../../src/controllers/auth-controller';
+import { ISignUpUserModel } from '../../../src/types';
+import Block from '../../../src/utils/block/block';
+import { VALIDATION_NAMES } from '../../../src/utils/validation';
 import signupTemplate from './signup.template';
+import './signup.css';
 
 export default class Signup extends Block {
   constructor() {

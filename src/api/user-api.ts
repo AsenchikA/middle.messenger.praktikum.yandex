@@ -1,5 +1,5 @@
-import { ISavingUserModel } from '~src/types';
-import { HTTPTransport, METHOD_TYPES } from '~src/utils/request/request';
+import { ISavingUserModel } from '../types';
+import { HTTPTransport, METHOD_TYPES } from '../utils/request/request';
 
 const userApiInstance = new HTTPTransport('/user');
 
@@ -8,12 +8,12 @@ export default class UserApi {
     return userApiInstance.put('/profile', model);
   }
 
-  public saveUserAvatar(form) {
+  public saveUserAvatar(form: FormData) {
     return userApiInstance.put('/profile/avatar', form, { method: METHOD_TYPES.PUT, withoutContentType: true });
   }
 
   public searchByLogin(login: string) {
-    return userApiInstance.post('/search', { login }).then((data) => JSON.parse(data));
+    return userApiInstance.post<string>('/search', { login }).then((data) => JSON.parse(data));
   }
 
   public changePassword(oldPassword: string, newPassword: string) {

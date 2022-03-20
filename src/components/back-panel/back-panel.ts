@@ -1,5 +1,6 @@
-import Block from '~src/utils/block/block';
+import Block from '../../../src/utils/block/block';
 import backPanelTemplate from './back-panel.template';
+import './back-panel.css';
 
 interface IBackPanelProps {
   onClick: () => void;

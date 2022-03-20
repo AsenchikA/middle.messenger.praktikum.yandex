@@ -1,12 +1,13 @@
 import * as pug from 'pug';
-import chatsController from '~src/controllers/chats-controller';
-import { IChatModel } from '~src/types';
-import Block from '~src/utils/block/block';
-import connect from '~src/utils/connect';
-import isEqual from '~src/utils/is-equal';
-import store, { IRootState } from '~src/utils/store';
+import chatsController from '../../../../../src/controllers/chats-controller';
+import { IChatModel } from '../../../../../src/types';
+import Block from '../../../../../src/utils/block/block';
+import connect from '../../../../../src/utils/connect';
+import isEqual from '../../../../../src/utils/is-equal';
+import { IRootState } from '../../../../../src/utils/store';
 import ChatCard from '../chat-card/chat-card';
 import chatListTemplate from './chat-list.template';
+import './chat-list.css';
 
 interface IChatListProps {
   onChatClick: (id: number) => void;
@@ -76,6 +77,7 @@ class ChatList extends Block<TChatListProps> {
   }
 
   public render(): DocumentFragment {
+    console.log('chatList Render');
     return this.compile(chatListTemplate);
   }
 }
@@ -86,4 +88,4 @@ function mapStateToProps(state: IRootState) {
   };
 }
 
-export default connect(mapStateToProps)(ChatList);
+export default connect<IMapStateToProps, IChatListProps>(mapStateToProps)(ChatList);

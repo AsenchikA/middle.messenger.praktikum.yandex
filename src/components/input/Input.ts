@@ -1,5 +1,6 @@
 import Block from '../../utils/block/block';
 import template from './input.template';
+import './input.css';
 
 export interface IInputProps {
   name: string;

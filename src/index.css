@@ -1,26 +1,3 @@
-@import '../src/components/input/input.css';
-@import '../src/components/error-block/error-block.css';
-@import '../src/components/validated-input/validated-input.css';
-@import '../src/components/button/button.css';
-@import '../src/components/back-panel/back-panel.css';
-@import '../src/pages/chats/components/chat-card/chat-card.css';
-@import '../src/pages/chats/components/chat-list/chat-list.css';
-@import '../src/pages/chats/components/chat-window/chat-window.css';
-@import '../src/pages/chats/components/chat-send-button/chat-send-button.css';
-@import '../src/pages/chats/components/context-menu/context-menu.css';
-@import '../src/pages/chats/components/context-menu-button/context-menu-button.css';
-@import '../src/pages/chats/components/chat-users-modal/chat-users-modal.css';
-@import '../src/pages/login/login.css';
-@import '../src/pages/signup/signup.css';
-@import '../src/pages/profile/profile.css';
-@import '../src/pages/profile/components/avatar-modal/avatar-modal.css';
-@import '../src/pages/profile/components/avatar/avatar.css';
-@import '../src/pages/profile/components/upload-input/upload-input.css';
-@import '../src/pages/not-found/not-found.css';
-@import '../src/pages/server-error/server-error.css';
-@import '../src/pages/chats/chats.css';
-@import '../src/pages/profile-editing/profile-editing.css';
-
 html {
   box-sizing: border-box;
   font-family: 'Inter', sans-serif;
@@ -44,7 +21,7 @@ p {
   margin: 0;
 }
 
-.body {
+body {
   height: 100vh;
   margin: 0;
   overflow: hidden;

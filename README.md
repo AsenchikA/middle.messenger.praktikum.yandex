@@ -6,7 +6,7 @@
 
 ## Используемые инструменты
 
-- Parcel для сборки проекта
+- Webpack для сборки проекта
 - шаблонизатор Pug
 - локальная раздача статики через Express
 - PostCSS с плагинами autoprefixer, cssnano, postcss-nested

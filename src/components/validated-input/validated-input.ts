@@ -1,8 +1,9 @@
-import Block from '~src/utils/block/block';
-import isEqual from '~src/utils/is-equal';
-import { validate, VALIDATION_NAMES } from '~src/utils/validation';
+import Block from '../../../src/utils/block/block';
+import isEqual from '../../../src/utils/is-equal';
+import { validate, VALIDATION_NAMES } from '../../../src/utils/validation';
 import Input, { IInputProps } from '../input/Input';
 import validatedInputTemplate from './validated-input.template';
+import './validated-input.css';
 
 interface IValidatedInputProps extends IInputProps {
   isValid: boolean;
@@ -67,7 +68,7 @@ export default class ValidatedInput extends Block<IValidatedInputProps> {
     const inputElement = (this.children.input as Input).getContent();
 
     if (inputElement) {
-      inputElement.value = '';
+      (inputElement as HTMLInputElement).value = '';
     }
   }
 

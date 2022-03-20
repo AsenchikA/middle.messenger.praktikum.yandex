@@ -5,15 +5,15 @@ function isPlainObject(value: unknown): value is Record<string, unknown> {
       && Object.prototype.toString.call(value) === '[object Object]';
 }
 
-function isArray(value: unknown): value is [] {
+function isArray(value: unknown): value is unknown[] {
   return Array.isArray(value);
 }
 
-function isArrayOrObject(value: unknown): value is [] | Record<string, unknown> {
+function isArrayOrObject(value: unknown): value is Record<string, unknown> {
   return isPlainObject(value) || isArray(value);
 }
 
-export default function isEqual(a: Record<string, unknown>, b: Record<string, unknown>): boolean {
+export default function isEqual(a: unknown, b: unknown): boolean {
   if (!isArrayOrObject(a) || !isArrayOrObject(b)) {
     return a === b;
   }
@@ -23,5 +23,5 @@ export default function isEqual(a: Record<string, unknown>, b: Record<string, un
   }
 
   return Object.keys(a)
-    .every((key) => isEqual(a[key] as Record<string, unknown>, b[key] as Record<string, unknown>));
+    .every((key) => isEqual(a[key] as any, b[key]));
 }

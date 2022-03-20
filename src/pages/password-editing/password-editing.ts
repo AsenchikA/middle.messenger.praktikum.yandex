@@ -1,14 +1,14 @@
-import BackPanel from '~src/components/back-panel/back-panel';
-import Button, { EButtonAppearance } from '~src/components/button/button';
-import ValidatedInput from '~src/components/validated-input/validated-input';
-import authController from '~src/controllers/auth-controller';
-import userController from '~src/controllers/user-controller';
-import { IFullUserModel } from '~src/types';
-import Block from '~src/utils/block/block';
-import connect from '~src/utils/connect';
-import router from '~src/utils/router/router';
-import { IRootState } from '~src/utils/store';
-import { VALIDATION_NAMES } from '~src/utils/validation';
+import BackPanel from '../../../src/components/back-panel/back-panel';
+import Button, { EButtonAppearance } from '../../../src/components/button/button';
+import ValidatedInput from '../../../src/components/validated-input/validated-input';
+import authController from '../../../src/controllers/auth-controller';
+import userController from '../../../src/controllers/user-controller';
+import { IFullUserModel } from '../../../src/types';
+import Block from '../../../src/utils/block/block';
+import connect from '../../../src/utils/connect';
+import router from '../../../src/utils/router/router';
+import { IRootState } from '../../../src/utils/store';
+import { VALIDATION_NAMES } from '../../../src/utils/validation';
 import passwordEditingTemplate from './password-editing.template';
 
 interface IMapStateToProps {
