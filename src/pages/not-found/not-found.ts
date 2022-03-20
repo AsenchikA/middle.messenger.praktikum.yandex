@@ -1,5 +1,5 @@
-import ErrorBlock from '../../../src/components/error-block/error-block';
-import Block from '../../../src/utils/block/block';
+import ErrorBlock from '@components/error-block/error-block';
+import Block from '@utils/block/block';
 import notFoundTemplate from './not-found.template';
 import './not-found.css';
 

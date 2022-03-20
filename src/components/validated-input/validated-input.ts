@@ -1,6 +1,6 @@
-import Block from '../../../src/utils/block/block';
-import isEqual from '../../../src/utils/is-equal';
-import { validate, VALIDATION_NAMES } from '../../../src/utils/validation';
+import Block from '@utils/block/block';
+import isEqual from '@utils/is-equal';
+import { validate, VALIDATION_NAMES } from '@utils/validation';
 import Input, { IInputProps } from '../input/Input';
 import validatedInputTemplate from './validated-input.template';
 import './validated-input.css';

@@ -1,4 +1,4 @@
-import Block from '../../../../../src/utils/block/block';
+import Block from '@utils/block/block';
 import chatSendButtonTemplate from './chat-send-button.template';
 import './chat-send-button.css';
 

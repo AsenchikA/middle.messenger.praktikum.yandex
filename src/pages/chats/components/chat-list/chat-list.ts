@@ -1,10 +1,10 @@
 import * as pug from 'pug';
-import chatsController from '../../../../../src/controllers/chats-controller';
-import { IChatModel } from '../../../../../src/types';
-import Block from '../../../../../src/utils/block/block';
-import connect from '../../../../../src/utils/connect';
-import isEqual from '../../../../../src/utils/is-equal';
-import { IRootState } from '../../../../../src/utils/store';
+import chatsController from '@controllers/chats-controller';
+import Block from '@utils/block/block';
+import connect from '@utils/connect';
+import isEqual from '@utils/is-equal';
+import { IRootState } from '@utils/store';
+import { IChatModel } from '../../../../types';
 import ChatCard from '../chat-card/chat-card';
 import chatListTemplate from './chat-list.template';
 import './chat-list.css';

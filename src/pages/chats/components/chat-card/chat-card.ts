@@ -1,4 +1,4 @@
-import Block from '../../../../../src/utils/block/block';
+import Block from '@utils/block/block';
 import template from './chat-card.template';
 import './chat-card.css';
 

@@ -1,11 +1,11 @@
-import Block from '../../../src/utils/block/block';
-import Input from '../../../src/components/input/Input';
+import Block from '@utils/block/block';
+import Input from '@components/input/Input';
+import ValidatedInput from '@components/validated-input/validated-input';
+import Button, { EButtonAppearance } from '@components/button/button';
+import { VALIDATION_NAMES } from '@utils/validation';
+import authController from '@controllers/auth-controller';
+import { ILoginUserModel } from '../../types';
 import loginTemplate from './login.template';
-import ValidatedInput from '../../../src/components/validated-input/validated-input';
-import Button, { EButtonAppearance } from '../../../src/components/button/button';
-import { VALIDATION_NAMES } from '../../../src/utils/validation';
-import authController from '../../../src/controllers/auth-controller';
-import { ILoginUserModel } from '../../../src/types';
 import './login.css';
 
 interface ILoginProps {

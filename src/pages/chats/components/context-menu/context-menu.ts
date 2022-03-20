@@ -1,5 +1,5 @@
-import Button, { EButtonAppearance } from '../../../../../src/components/button/button';
-import Block from '../../../../../src/utils/block/block';
+import Button, { EButtonAppearance } from '@components/button/button';
+import Block from '@utils/block/block';
 import ContextMenuButton from '../context-menu-button/context-menu-button';
 import contextMenuTemplate from './context-menu.template';
 import './context-menu.css';

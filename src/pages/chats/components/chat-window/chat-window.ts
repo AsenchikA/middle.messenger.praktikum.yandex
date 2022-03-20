@@ -1,10 +1,10 @@
-import ValidatedInput from '../../../../../src/components/validated-input/validated-input';
-import chatsController from '../../../../../src/controllers/chats-controller';
-import { IChatModel, IFullMessageModel, IFullUserModel } from '../../../../../src/types';
-import Block from '../../../../../src/utils/block/block';
-import connect from '../../../../../src/utils/connect';
-import { IRootState } from '../../../../../src/utils/store';
-import { VALIDATION_NAMES } from '../../../../../src/utils/validation';
+import ValidatedInput from '@components/validated-input/validated-input';
+import chatsController from '@controllers/chats-controller';
+import Block from '@utils/block/block';
+import connect from '@utils/connect';
+import { IRootState } from '@utils/store';
+import { VALIDATION_NAMES } from '@utils/validation';
+import { IChatModel, IFullMessageModel, IFullUserModel } from '../../../../types';
 import ChatSendButton from '../chat-send-button/chat-send-button';
 import ChatUsersModal from '../chat-users-modal/chat-users-modal';
 import ContextMenu from '../context-menu/context-menu';

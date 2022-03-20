@@ -1,4 +1,4 @@
-import Block from '../../../../../src/utils/block/block';
+import Block from '@utils/block/block';
 import uploadInputTemplate from './upload-input.template';
 import './upload-input.css';
 

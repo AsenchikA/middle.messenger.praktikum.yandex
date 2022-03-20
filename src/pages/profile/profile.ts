@@ -1,15 +1,15 @@
-import Button, { EButtonAppearance } from '../../../src/components/button/button';
-import authController from '../../../src/controllers/auth-controller';
-import { IFullUserModel } from '../../../src/types';
-import Block from '../../../src/utils/block/block';
-import connect from '../../../src/utils/connect';
-import router from '../../../src/utils/router/router';
-import { IRootState } from '../../../src/utils/store';
+import Button, { EButtonAppearance } from '@components/button/button';
+import authController from '@controllers/auth-controller';
+import Block from '@utils/block/block';
+import connect from '@utils/connect';
+import router from '@utils/router/router';
+import { IRootState } from '@utils/store';
+import isEqual from '@utils/is-equal';
+import BackPanel from '@components/back-panel/back-panel';
+import { IFullUserModel } from '../../types';
 import Avatar from './components/avatar/avatar';
 import AvatarModal from './components/avatar-modal/avatar-modal';
 import profileTemplate from './profile.template';
-import isEqual from '../../../src/utils/is-equal';
-import BackPanel from '../../../src/components/back-panel/back-panel';
 import './profile.css';
 
 interface IMapStateToProps {

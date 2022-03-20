@@ -14,6 +14,12 @@ module.exports = {
     clean: true,
   },
   resolve: {
+    alias: {
+      '@utils': path.join(__dirname, '/src/utils'),
+      '@components': path.join(__dirname, '/src/components'),
+      '@pages': path.join(__dirname, '/src/pages'),
+      '@controllers': path.join(__dirname, '/src/controllers'),
+    },
     extensions: [".ts", ".js"],
     fallback: {
       fs: false,

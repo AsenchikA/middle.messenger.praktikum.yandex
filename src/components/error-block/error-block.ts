@@ -1,4 +1,4 @@
-import Block from '../../../src/utils/block/block';
+import Block from '@utils/block/block';
 import template from './error-block.template';
 import './error-block.css';
 

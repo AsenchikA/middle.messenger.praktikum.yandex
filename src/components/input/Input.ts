@@ -1,4 +1,4 @@
-import Block from '../../utils/block/block';
+import Block from '@utils/block/block';
 import template from './input.template';
 import './input.css';
 
