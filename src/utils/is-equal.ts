@@ -23,5 +23,5 @@ export default function isEqual(a: unknown, b: unknown): boolean {
   }
 
   return Object.keys(a)
-    .every((key) => isEqual(a[key] as any, b[key]));
+    .every((key) => isEqual(a[key], b[key]));
 }

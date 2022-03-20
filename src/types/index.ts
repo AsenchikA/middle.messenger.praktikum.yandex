@@ -48,7 +48,6 @@ export interface IFullMessageModel {
   time: string,
   content: string,
   is_read: boolean,
-  file: any,
 }
 
 export interface IFormattedFullMessageModel {

@@ -10,7 +10,9 @@
     "eslint": "eslint src/**/*.ts --fix",
     "lint": "npm run stylelint && npm run eslint",
     "test": "./node_modules/.bin/mocha -r tsconfig-paths/register -r jsdom-global/register",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "docker:build": "docker build -t messenger .",
+    "docker:start": "docker run -p 3000:3000 -d messenger"
   },
   "repository": {
     "type": "git",
