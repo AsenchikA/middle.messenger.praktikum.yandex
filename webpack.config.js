@@ -21,7 +21,8 @@ module.exports = {
     extensions: [".ts", ".js"],
     fallback: {
       fs: false,
-      path: false
+      path: false,
+      os: false
     }
   },
   module: {
