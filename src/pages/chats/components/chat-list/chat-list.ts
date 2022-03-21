@@ -77,7 +77,6 @@ class ChatList extends Block<TChatListProps> {
   }
 
   public render(): DocumentFragment {
-    console.log('chatList Render');
     return this.compile(chatListTemplate);
   }
 }

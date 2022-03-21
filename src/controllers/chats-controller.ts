@@ -1,6 +1,6 @@
+import store from '@utils/store';
 import api from '../api/api';
 import { IFormattedFullMessageModel, IFullMessageModel, IFullUserModel } from '../types';
-import store from '../utils/store';
 
 class ChatsController {
   public getList() {

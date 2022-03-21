@@ -3,8 +3,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ContextMapPlugin = require('context-map-webpack-plugin');
 const webpack = require('webpack');
 
-console.log(__dirname);
-
 module.exports = {
   mode: process.env.NODE_ENV,
   entry: "./src/index.ts",

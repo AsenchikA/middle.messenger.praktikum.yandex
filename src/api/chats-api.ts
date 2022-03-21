@@ -1,6 +1,6 @@
+import { HTTPTransport } from '@utils/request/request';
+import WebSocketConnection from '@utils/webSocket';
 import { IFullMessageModel } from '../types';
-import { HTTPTransport } from '../utils/request/request';
-import WebSocketConnection from '../utils/webSocket';
 
 const chatsApiInstance = new HTTPTransport('/chats');
 
