@@ -47,6 +47,7 @@ class ChatWindow extends Block<IChatWindowProps> {
 
           if (messageInput.state.isValid) {
             chatsController.sendMessage(messageInput.value);
+            messageInput.resetValue();
           }
         },
       },
