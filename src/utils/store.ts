@@ -1,4 +1,4 @@
-import { IChatModel, IFormattedFullMessageModel, IFullUserModel } from '~src/types';
+import { IChatModel, IFormattedFullMessageModel, IFullUserModel } from '../types';
 import EventBus from './event-bus';
 import set from './set';
 

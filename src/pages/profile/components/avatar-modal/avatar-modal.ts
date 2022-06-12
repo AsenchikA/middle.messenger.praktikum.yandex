@@ -1,8 +1,9 @@
-import Button, { EButtonAppearance } from '~src/components/button/button';
-import userController from '~src/controllers/user-controller';
-import Block from '~src/utils/block/block';
+import Button, { EButtonAppearance } from '@components/button/button';
+import userController from '@controllers/user-controller';
+import Block from '@utils/block/block';
 import avatarModalTemplate from './avatar-modal.template';
 import UploadInput from '../upload-input/upload-input';
+import './avatar-modal.css';
 
 interface IAvatarModalProps {
   onClose: () => void;
@@ -31,9 +32,9 @@ export default class AvatarModal extends Block<IAvatarModalProps> {
       text: 'Сохранить',
       className: 'avatar-modal__submit-button',
       onClick: () => {
-        const inputElement = uploadInput.element;
+        const inputElement = uploadInput.element as HTMLInputElement;
 
-        if (inputElement && inputElement?.files.length > 0) {
+        if (inputElement && inputElement.files && inputElement.files.length > 0) {
           const form = new FormData();
           form.append('avatar', inputElement.files[0]);
 
@@ -57,7 +58,10 @@ export default class AvatarModal extends Block<IAvatarModalProps> {
   }
 
   public changeImage(event: Event) {
-    this.setState({ fileName: event?.target?.files[0]?.name });
+    const inputElement = event?.target as HTMLInputElement;
+    if (inputElement && inputElement.files) {
+      this.setState({ fileName: inputElement.files[0]?.name });
+    }
   }
 
   public onSave() {

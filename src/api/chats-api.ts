@@ -1,6 +1,6 @@
-import { IFullMessageModel } from '~src/types';
-import { HTTPTransport } from '~src/utils/request/request';
-import WebSocketConnection from '~src/utils/webSocket';
+import { HTTPTransport } from '@utils/request/request';
+import WebSocketConnection from '@utils/webSocket';
+import { IFullMessageModel } from '../types';
 
 const chatsApiInstance = new HTTPTransport('/chats');
 
@@ -32,7 +32,7 @@ export default class ChatsApi {
   }
 
   public getToken(chatId: number) {
-    return chatsApiInstance.post(`/token/${chatId}`).then((data) => JSON.parse(data)?.token);
+    return chatsApiInstance.post<string>(`/token/${chatId}`).then((data) => JSON.parse(data)?.token);
   }
 
   public openChatConnection(

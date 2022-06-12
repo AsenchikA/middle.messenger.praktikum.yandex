@@ -1,5 +1,5 @@
-import { ILoginUserModel, ISignUpUserModel } from '~src/types';
-import { HTTPTransport } from '~src/utils/request/request';
+import { HTTPTransport } from '@utils/request/request';
+import { ILoginUserModel, ISignUpUserModel } from '../types';
 
 const authApiInstance = new HTTPTransport('/auth');
 

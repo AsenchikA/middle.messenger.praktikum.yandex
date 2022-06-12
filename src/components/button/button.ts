@@ -1,5 +1,6 @@
-import Block from '~src/utils/block/block';
+import Block from '@utils/block/block';
 import buttonTemplate from './button.template';
+import './button.css';
 
 export enum EButtonAppearance {
   SUBMIT,

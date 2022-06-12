@@ -1,4 +1,4 @@
-import { IFullMessageModel } from '~src/types';
+import { IFullMessageModel } from '../types';
 
 interface IWebSocketConnectionProps {
   userId: number;

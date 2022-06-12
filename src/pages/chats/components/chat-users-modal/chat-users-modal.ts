@@ -1,8 +1,9 @@
-import Button, { EButtonAppearance } from '~src/components/button/button';
-import ValidatedInput from '~src/components/validated-input/validated-input';
-import Block from '~src/utils/block/block';
-import { VALIDATION_NAMES } from '~src/utils/validation';
+import Button, { EButtonAppearance } from '@components/button/button';
+import ValidatedInput from '@components/validated-input/validated-input';
+import Block from '@utils/block/block';
+import { VALIDATION_NAMES } from '@utils/validation';
 import chatUsersModalTemplate from './chat-users-modal.template';
+import './chat-users-modal.css';
 
 interface IChatUsersModalProps {
   headerText: string;

@@ -1,6 +1,7 @@
-import ErrorBlock from '~src/components/error-block/error-block';
-import Block from '~src/utils/block/block';
+import ErrorBlock from '@components/error-block/error-block';
+import Block from '@utils/block/block';
 import serverErrorTemplate from './server-error.template';
+import './server-error.css';
 
 export default class ServerError extends Block {
   constructor() {

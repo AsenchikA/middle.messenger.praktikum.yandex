@@ -1,5 +1,6 @@
-import Block from '~src/utils/block/block';
+import Block from '@utils/block/block';
 import avatarTemplate from './avatar.template';
+import './avatar.css';
 
 interface IAvatarProps {
   url: string;

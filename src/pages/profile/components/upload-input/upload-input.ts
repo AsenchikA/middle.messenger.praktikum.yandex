@@ -1,5 +1,6 @@
-import Block from '~src/utils/block/block';
+import Block from '@utils/block/block';
 import uploadInputTemplate from './upload-input.template';
+import './upload-input.css';
 
 interface IUploadInputProps {
   id: string;
@@ -28,7 +29,7 @@ export default class UploadInput extends Block<IUploadInputProps> {
 
   public resetValue() {
     if (this.element) {
-      this.element.value = '';
+      (this.element as HTMLInputElement).value = '';
     }
   }
 

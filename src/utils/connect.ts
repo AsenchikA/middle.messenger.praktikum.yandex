@@ -1,10 +1,10 @@
-import Block from './block/block';
 import cloneDeep from './cloneDeep';
 import store, { IRootState, STORE_EVENTS } from './store';
 
-function connect<IMapStateToProps>(mapStateToProps: (state: IRootState) => IMapStateToProps) {
-  return (Component: typeof Block) => class extends Component {
-    constructor(props) {
+// eslint-disable-next-line max-len
+function connect<IMapStateToProps extends object, IOwnProps extends object>(mapStateToProps: (state: IRootState) =>IMapStateToProps): (Component: any) => any {
+  return (Component: any) => class extends Component<IOwnProps & IMapStateToProps> {
+    constructor(props: any) {
       super({ ...props, ...mapStateToProps(store.getState()) });
 
       store.on(STORE_EVENTS.UPDATED, () => {

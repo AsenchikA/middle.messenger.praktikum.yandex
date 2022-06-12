@@ -1,6 +1,6 @@
-import api from '~src/api/api';
-import { ISavingUserModel } from '~src/types';
-import router from '~src/utils/router/router';
+import api from '../api/api';
+import { ISavingUserModel } from '../types';
+import router from '../utils/router/router';
 import authController from './auth-controller';
 
 class UserController {
@@ -12,7 +12,7 @@ class UserController {
       });
   }
 
-  public saveUserAvatar(form) {
+  public saveUserAvatar(form: FormData) {
     return api.user.saveUserAvatar(form);
   }
 
