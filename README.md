@@ -1,7 +1,9 @@
 # Study project from [Yandex.Practicum](https://practicum.com/)
 
 Simple messenger for exhange messeges using web-sockets.
-Project with immitation own framework based on proxy-objects. (The main goal is to understand bases of working react without it's using).
+
+Project with immitation own framework based on proxy-objects.
+The main goal is to understand bases of working react without it's using.
 
 Pages:
 1. Authorization
