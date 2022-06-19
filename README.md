@@ -1,4 +1,4 @@
-# Study project from [Yandex.Practicum] (https://practicum.com/)
+# Study project from [Yandex.Practicum](https://practicum.com/)
 
 Simple messenger for exhange messeges using web-sockets.
 Project with immitation own framework based on proxy-objects. (The main goal is to understand bases of working react without it's using).
@@ -12,9 +12,10 @@ Pages:
 
 There are no libraries except of preprocessors.
 
-[Design] (https://www.figma.com/file/24EUnEHGEDNLdOcxg7ULwV/Chat?node-id=0%3A1) is mostly made by Yandex Praktikum team.
+[Design](https://www.figma.com/file/24EUnEHGEDNLdOcxg7ULwV/Chat?node-id=0%3A1) is mostly made by Yandex Praktikum team.
 
 [Hosting on Netlify](https://clever-leavitt-22bd57.netlify.app)
+
 [Hosting on Heroku](https://praktikum-messenger-again.herokuapp.com/)
 
 ## Using technologies
@@ -28,7 +29,7 @@ There are no libraries except of preprocessors.
 - ESLint, Stylelint
 - Chai, Mocha
 
-## Используемые команды
+## Using commands
 
 - `npm install` —  install dependencies,
 - `npm run dev` — start the app in the dev environment,
