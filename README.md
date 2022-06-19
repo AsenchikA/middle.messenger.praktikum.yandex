@@ -1,29 +1,38 @@
-# Учебный проект Яндекс.Практикум
+# Study project from [Yandex.Practicum] (https://practicum.com/)
 
-Проект создан на основе [макета в Figma от Яндекса](https://www.figma.com/file/24EUnEHGEDNLdOcxg7ULwV/Chat?node-id=0%3A1)
+Simple messenger for exhange messeges using web-sockets.
+Project with immitation own framework based on proxy-objects. (The main goal is to understand bases of working react without it's using).
 
-[Веб-хостинг в Netlify](https://clever-leavitt-22bd57.netlify.app)
+Pages:
+1. Authorization
+2. Registration
+3. Chats
+4. Profile
+5. Editing profile
 
-[Веб-хостинг на Heroku](https://praktikum-messenger-again.herokuapp.com/)
+There are no libraries except of preprocessors.
 
-## Используемые инструменты
+[Design] (https://www.figma.com/file/24EUnEHGEDNLdOcxg7ULwV/Chat?node-id=0%3A1) is mostly made by Yandex Praktikum team.
 
-- Webpack и Docker для сборки проекта
-- шаблонизатор Pug
-- локальная раздача статики через Express
-- PostCSS с плагинами autoprefixer, cssnano, postcss-nested
-- husky на precommit
-- веб-хостинги Netlify и Heroku
-- линтинг кода ESLint, Stylelint
-- тестирование с помощью Chai, Mocha
+[Hosting on Netlify](https://clever-leavitt-22bd57.netlify.app)
+[Hosting on Heroku](https://praktikum-messenger-again.herokuapp.com/)
+
+## Using technologies
+
+- Webpack
+- Docker
+- Pug
+- Express
+- PostCSS with autoprefixer, cssnano, postcss-nested
+- husky
+- ESLint, Stylelint
+- Chai, Mocha
 
 ## Используемые команды
 
-- `npm install` — установка стабильной версии,
-- `npm run dev` — запуск проекта локально,
-- `npm run build` — сборка проекта,
-- `npm run start` — сборка проекта и запуск express-сервера на 3000 порту,
-- `npm run lint` — линтинг проекта,
-- `npm run test` — запуск тестов.
-
-[Pull request, sprint 4](https://github.com/AsenchikA/middle.messenger.praktikum.yandex/pull/4)
+- `npm install` —  install dependencies,
+- `npm run dev` — start the app in the dev environment,
+- `npm run build` — create build,
+- `npm run start` — create build and start express-server,
+- `npm run lint` — lint project,
+- `npm run test` — start tests.
