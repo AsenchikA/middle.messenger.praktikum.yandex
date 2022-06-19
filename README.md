@@ -1,9 +1,9 @@
 # Study project from [Yandex.Practicum](https://practicum.com/)
 
-Simple messenger for exhange messeges using web-sockets.
+Simple messenger for exchanging messages using web-sockets.
 
-Project with immitation own framework based on proxy-objects.
-The main goal is to understand bases of working react without it's using.
+Project with imitation own framework based on proxy-objects.
+The main goal is to understand the bases of working react without its usage.
 
 Pages:
 1. Authorization
@@ -12,7 +12,7 @@ Pages:
 4. Profile
 5. Editing profile
 
-There are no libraries except of preprocessors.
+There are no libraries except for preprocessors.
 
 [Design](https://www.figma.com/file/24EUnEHGEDNLdOcxg7ULwV/Chat?node-id=0%3A1) is mostly made by Yandex Praktikum team.
 
